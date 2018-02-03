@@ -1,23 +1,41 @@
-import React, { Component } from 'react';
-import { Text } from 'react-native';
-import firebase from 'firebase';
-import { Button, Card, CardSection, Input } from '../reusable/index';
+import React, { Component } from "react";
+import { Text, ActivityIndicator } from "react-native";
+import firebase from "firebase";
+import { Button, Card, CardSection, Input, Spinner } from "../reusable/index";
 
 class LoginForm extends Component {
-  state = { email: '', password: '', error: '' };
+  state = { email: "", password: "", error: "", loading: false };
 
-  onButtonPress() {
+  loginSuccess() {
+    this.setState({ email: "", password: "", loading: false, error: "" });
+  }
+
+  loginError() {
+    this.setState({ error: "Authentication Failed.", loading: false });
+  }
+
+  loginSubmit() {
     const { email, password } = this.state;
-
-    this.setState({ error: '' });
-
-    firebase.auth().signInWithEmailAndPassword(email, password)
+    this.setState({ error: "", loading: true });
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(this.loginSuccess.bind(this))
       .catch(() => {
-        firebase.auth().createUserWithEmailAndPassword(email, password)
-          .catch(() => {
-            this.setState({ error: 'Authentication Failed.' });
-          });
+        firebase
+          .auth()
+          .createUserWithEmailAndPassword(email, password)
+          .then(this.loginSuccess.bind(this))
+          .catch(this.loginError.bind(this));
       });
+  }
+
+  conditionalButton() {
+    if (this.state.loading) {
+      return <ActivityIndicator size="small" />;
+    } else {
+      return <Button onPress={this.loginSubmit.bind(this)}>Log in</Button>;
+    }
   }
 
   render() {
@@ -42,15 +60,9 @@ class LoginForm extends Component {
           />
         </CardSection>
 
-        <Text style={styles.errorTextStyle}>
-          {this.state.error}
-        </Text>
+        <Text style={styles.errorTextStyle}>{this.state.error}</Text>
 
-        <CardSection>
-          <Button onPress={this.onButtonPress.bind(this)}>
-            Log in
-          </Button>
-        </CardSection>
+        <CardSection>{this.conditionalButton()}</CardSection>
       </Card>
     );
   }
@@ -59,8 +71,8 @@ class LoginForm extends Component {
 const styles = {
   errorTextStyle: {
     fontSize: 20,
-    alignSelf: 'center',
-    color: 'red'
+    alignSelf: "center",
+    color: "red"
   }
 };
 
