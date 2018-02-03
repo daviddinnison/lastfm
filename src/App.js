@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import firebase from "firebase";
 import { View } from "react-native";
 
-import HeaderBar from "./components/unprotected/header-bar";
+import HeaderBar from "./components/unprotected/reusable/header-bar";
 import LoginForm from "./components/unprotected/forms/login-form";
 
 class App extends Component {
