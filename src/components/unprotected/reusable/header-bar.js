@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
-import { AppRegistry } from 'react-native';
+import React, { Component } from "react";
+import { AppRegistry } from "react-native";
 import {
   // StyleSheet,
   Text,
   View
-} from 'react-native';
-
+} from "react-native";
 
 class HeaderBar extends Component {
   render() {
@@ -36,5 +35,5 @@ class HeaderBar extends Component {
 //   },
 // });
 
-export default HeaderBar;
-AppRegistry.registerComponent('weatherbossnative', () => HeaderBar);
+export { HeaderBar };
+// AppRegistry.registerComponent('weatherbossnative', () => HeaderBar);
