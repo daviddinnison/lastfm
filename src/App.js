@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import firebase from "firebase";
-import { Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 import {
   Button,
@@ -9,6 +9,8 @@ import {
 } from "./components/unprotected/reusable/index";
 
 import LoginForm from "./components/unprotected/forms/login-form";
+import { LandingPanel } from "./components/unprotected/landing-panel";
+import { Dashboard } from "./components/protected/dashboard";
 
 class App extends Component {
   state = {
@@ -39,12 +41,17 @@ class App extends Component {
       case true:
         return (
           <View>
-            <Text>you are logged in....</Text>
-            <Button onPress={() => firebase.auth().signOut()}>Sign Out</Button>
+            {/* <Button onPress={() => firebase.auth().signOut()}>Sign Out</Button> */}
+            <Dashboard/>
           </View>
         );
       case false:
-        return <LoginForm />;
+        return (
+          <View>
+            <LandingPanel />
+            <LoginForm />
+          </View>
+        );
       default:
         return <Spinner size="large" />;
     }
@@ -52,12 +59,18 @@ class App extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.app}>
         <HeaderBar />
         {this.renderLoginContent()}
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  app: {
+    backgroundColor: "lightgrey"
+  }
+});
 
 export default App;

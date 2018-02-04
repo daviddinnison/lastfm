@@ -34,7 +34,7 @@ class LoginForm extends Component {
     if (this.state.loading) {
       return <ActivityIndicator size="small" />;
     } else {
-      return <Button onPress={this.loginSubmit.bind(this)}>Log in</Button>;
+      return <Button onPress={this.loginSubmit.bind(this)} style={styles.login}>Log in</Button>;
     }
   }
 
@@ -43,7 +43,6 @@ class LoginForm extends Component {
       <Card>
         <CardSection>
           <Input
-            placeholder="user@gmail.com"
             label="Email"
             value={this.state.email}
             onChangeText={email => this.setState({ email })}
@@ -53,7 +52,6 @@ class LoginForm extends Component {
         <CardSection>
           <Input
             secureTextEntry
-            placeholder="password"
             label="Password"
             value={this.state.password}
             onChangeText={password => this.setState({ password })}
@@ -73,6 +71,11 @@ const styles = {
     fontSize: 20,
     alignSelf: "center",
     color: "red"
+  },
+  login: {
+    borderColor: "black",
+    borderBottomWidth: 2,
+    borderTopWidth: 2
   }
 };
 

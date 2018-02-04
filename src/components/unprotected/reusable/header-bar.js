@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { AppRegistry } from "react-native";
+import { AppRegistry, StyleSheet } from "react-native";
 import {
   // StyleSheet,
   Text,
@@ -9,31 +9,22 @@ import {
 class HeaderBar extends Component {
   render() {
     return (
-      <View>
-        <Text>this is the header</Text>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>WeatherBoss</Text>
       </View>
     );
   }
 }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     backgroundColor: '#F5FCFF',
-//   },
-//   welcome: {
-//     fontSize: 20,
-//     textAlign: 'center',
-//     margin: 10,
-//   },
-//   instructions: {
-//     textAlign: 'center',
-//     color: '#333333',
-//     marginBottom: 5,
-//   },
-// });
+const styles = StyleSheet.create({
+  header: {
+    backgroundColor: "blue",
+    padding: 5
+  },
+  headerText: {
+    color: "#fff"
+  }
+});
 
 export { HeaderBar };
 // AppRegistry.registerComponent('weatherbossnative', () => HeaderBar);
