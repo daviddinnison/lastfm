@@ -1,32 +1,34 @@
+//react
 import React from "react";
-import firebase from "firebase";
-import { Image, Text, View } from "react-native";
+import { connect } from "react-redux";
 
-import { Card, CardSection, Button } from "../unprotected/reusable/index";
+//react native
+import { StyleSheet, Text, View } from "react-native";
 
-const Dashboard = props => {
-  return (
-    <View style={styles.containerStyle}>
-      <Card>
-        <CardSection>
-          <Button onPress={() => firebase.auth().signOut()}>Sign Out</Button>
-          <Text style={styles.subHeading}>THIS IS THE Dashboard</Text>
-        </CardSection>
-      </Card>
-    </View>
-  );
-};
+import { testAction } from "../../actions/forecast";
 
-const styles = {
-  containerStyle: {},
-  subHeading: {
-    color: "black"
-  },
-  image: {
-    alignSelf: "center",
-    height: 150,
-    width: 150
+export class Dashboard extends React.Component {
+  componentDidMount() {
+    this.props.dispatch(testAction());
   }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text>{this.props.test}</Text>
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {},
+});
+
+const mapStateToProps = function(state) {
+  return {
+    test: state.test
+  };
 };
 
-export { Dashboard };
+export default connect(mapStateToProps)(Dashboard);

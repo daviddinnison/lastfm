@@ -10,7 +10,7 @@ import {
 
 import LoginForm from "./components/unprotected/forms/login-form";
 import { LandingPanel } from "./components/unprotected/landing-panel";
-import { Dashboard } from "./components/protected/dashboard";
+import Dashboard from "./components/protected/dashboard";
 
 class Gateway extends Component {
   state = {
@@ -42,7 +42,7 @@ class Gateway extends Component {
         return (
           <View>
             {/* <Button onPress={() => firebase.auth().signOut()}>Sign Out</Button> */}
-            <Dashboard/>
+            <Dashboard />
           </View>
         );
       case false:
