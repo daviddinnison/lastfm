@@ -18,22 +18,23 @@ class Gateway extends Component {
   };
 
   componentWillMount() {
-    firebase.initializeApp({
-      apiKey: "AIzaSyDNCS8U4XrmAQfffq42cm2Vpp2XARDVZa4",
-      authDomain: "weatherboss-e1d77.firebaseapp.com",
-      databaseURL: "https://weatherboss-e1d77.firebaseio.com",
-      projectId: "weatherboss-e1d77",
-      storageBucket: "weatherboss-e1d77.appspot.com",
-      messagingSenderId: "862082707571"
-    });
+    // firebase.initializeApp({
+    //   apiKey: "AIzaSyDNCS8U4XrmAQfffq42cm2Vpp2XARDVZa4",
+    //   authDomain: "weatherboss-e1d77.firebaseapp.com",
+    //   databaseURL: "https://weatherboss-e1d77.firebaseio.com",
+    //   projectId: "weatherboss-e1d77",
+    //   storageBucket: "weatherboss-e1d77.appspot.com",
+    //   messagingSenderId: "862082707571"
+    // });
+
     //signs users in or out
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        this.setState({ loggedIn: true });
-      } else {
-        this.setState({ loggedIn: false });
-      }
-    });
+    // firebase.auth().onAuthStateChanged(user => {
+    //   if (user) {
+    //     this.setState({ loggedIn: true });
+    //   } else {
+    //     this.setState({ loggedIn: false });
+    //   }
+    // });
   }
 
   renderLoginContent() {

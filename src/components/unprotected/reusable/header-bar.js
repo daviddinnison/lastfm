@@ -10,7 +10,7 @@ class HeaderBar extends Component {
   render() {
     return (
       <View style={styles.header}>
-        <Text style={styles.headerText}>WeatherBoss</Text>
+        <Text style={styles.headerText}>WeatherBosstest</Text>
       </View>
     );
   }

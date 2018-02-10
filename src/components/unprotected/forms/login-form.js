@@ -17,17 +17,17 @@ class LoginForm extends Component {
   loginSubmit() {
     const { email, password } = this.state;
     this.setState({ error: "", loading: true });
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(this.loginSuccess.bind(this))
-      .catch(() => {
-        firebase
-          .auth()
-          .createUserWithEmailAndPassword(email, password)
-          .then(this.loginSuccess.bind(this))
-          .catch(this.loginError.bind(this));
-      });
+    // firebase
+    //   .auth()
+    //   .signInWithEmailAndPassword(email, password)
+    //   .then(this.loginSuccess.bind(this))
+    //   .catch(() => {
+    //     firebase
+    //       .auth()
+    //       .createUserWithEmailAndPassword(email, password)
+    //       .then(this.loginSuccess.bind(this))
+    //       .catch(this.loginError.bind(this));
+    //   });
   }
 
   conditionalButton() {
