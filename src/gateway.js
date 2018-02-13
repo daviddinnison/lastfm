@@ -14,7 +14,7 @@ import Dashboard from "./components/protected/dashboard";
 
 class Gateway extends Component {
   state = {
-    loggedIn: true
+    loggedIn: false
   };
 
   componentWillMount() {
