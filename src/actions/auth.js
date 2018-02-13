@@ -1,8 +1,8 @@
 // import jwtDecode from 'jwt-decode';
-// import {SubmissionError} from 'redux-form';
+import {SubmissionError} from 'redux-form';
 
 import {API_BASE_URL} from '../config';
-// import {normalizeResponseErrors} from './utils';
+import {normalizeResponseErrors} from './utils';
 // import {saveAuthToken, clearAuthToken} from '../local-storage';
 
 export const TEST_AUTH_ACTION = 'TEST_AUTH_ACTION';
@@ -64,7 +64,7 @@ export const login = (username, password) => dispatch => {
         })
             // Reject any requests which don't return a 200 status, creating
             // errors which follow a consistent format
-            .then(res => normalizeResponseErrors(res))
+            // .then(res => normalizeResponseErrors(res))
             .then(res => res.json())
             .then(({authToken}) => storeAuthInfo(authToken, dispatch))
             .catch(err => {

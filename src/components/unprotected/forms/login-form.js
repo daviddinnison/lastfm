@@ -1,91 +1,68 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { Text, ActivityIndicator } from "react-native";
+import { Field, reduxForm } from "redux-form";
+import { Text, ActivityIndicator, TextInput, TouchableOpacity, View } from "react-native";
 
 import { Button, Card, CardSection, Input, Spinner } from "../reusable/index";
 
 import { login } from "../../../actions/auth";
 
-class LoginForm extends Component {
-  state = { username: "", password: "", error: "", loading: false };
+/**
+ * Automatically adds the dashes required by the specified phone format and limits the input to ten characters
+ */
+const userFormatter = (number) => {
+  if (!number) return '';
+  // NNN-NNN-NNNN
+  const splitter = /.{1,3}/g;
+  number = number.substring(0, 10);
+  return number.substring(0, 7).match(splitter).join('-') + number.substring(7);
+};
 
-  loginSuccess() {
-    this.setState({ username: "", password: "", loading: false, error: "" });
+// remove dashes added by the formatter
+const phoneParser = (number) => number ? number.replace(/-/g, '') : '';
+
+
+/**
+ * Force before max date
+ */
+const minDateNormalize = (value, previousValue, values) => {
+  const momentMaxDate = moment(values.maxDate, 'MM-DD-YYYY', true);
+  const momentMinDate = moment(value, 'MM-DD-YYYY', true);
+  if (!momentMinDate.isValid() || !momentMaxDate.isValid()) {
+    return value;
   }
-
-  loginError() {
-    this.setState({ error: "Authentication Failed.", loading: false });
+  if (!momentMinDate.isBefore(momentMaxDate)) {
+    return momentMaxDate.subtract(1, 'd').format('MM-DD-YYYY');
   }
+  return value;
+};
 
-  loginSubmit(user, pass) {
-    // const username = this.state.username;
-    // const password = this.state.password;
-    this.props.dispatch(login(user, pass));
-    // this.setState({ error: "", loading: true });
-  }
-
-  conditionalButton() {
-    if (this.state.loading) {
-      return <ActivityIndicator size="small" />;
-    } else {
-      return (
-        <Button
-          style={styles.login}
-          onPress={() => {
-            this.loginSubmit(this.state.username, this.state.password);
-          }}
-        >
-          Log in
-        </Button>
-      );
-    }
-  }
-
-  render() {
-    return (
-      <Card>
-        <CardSection>
-          <Input
-            label="Username"
-            value={this.state.username}
-            onChangeText={username => this.setState({ username })}
-          />
-        </CardSection>
-
-        <CardSection>
-          <Input
-            secureTextEntry
-            label="Password"
-            value={this.state.password}
-            onChangeText={password => this.setState({ password })}
-          />
-        </CardSection>
-
-        <Text style={styles.errorTextStyle}>{this.state.error}</Text>
-
-        <CardSection>{this.conditionalButton()}</CardSection>
-      </Card>
-    );
-  }
+const LoginForm = props => {
+  return (
+    <View keyboardShouldPersistTaps={'handled'}>
+      <Text style={{ fontWeight: 'bold', marginTop: 20 }}>Phone number</Text>
+      <Field
+        name={'username'}
+        component={Input}
+        placeholder={'NNN-NNN-NNNN'}
+        format={userFormatter}
+        parse={phoneParser}
+      />
+      <Text style={{ fontWeight: 'bold', marginTop: 20 }}>Min date</Text>
+      <Field
+        name={'password'}
+        component={Input}
+        placeholder={'MM-DD-YYYY'}
+        normalize={minDateNormalize}
+      />
+      <TouchableOpacity onPress={props.handleSubmit}>
+        <Text>Submit!</Text>
+      </TouchableOpacity>
+    </View>
+  );
 }
 
-const styles = {
-  errorTextStyle: {
-    fontSize: 20,
-    alignSelf: "center",
-    color: "red"
-  },
-  login: {
-    borderColor: "black",
-    borderBottomWidth: 2,
-    borderTopWidth: 2
-  }
-};
 
-const mapStateToProps = function (state) {
-  return {
-      currentUser: state.currentUser,
-  }
-};
-
-export default connect(mapStateToProps)(LoginForm);
+export default reduxForm({
+  form: 'signIn'
+})(LoginForm);
