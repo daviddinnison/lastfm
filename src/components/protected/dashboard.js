@@ -5,11 +5,11 @@ import { connect } from "react-redux";
 //react native
 import { StyleSheet, Text, View } from "react-native";
 
-import { testAction } from "../../actions/forecast";
+import { testAuthAction } from "../../actions/auth";
 
 export class Dashboard extends React.Component {
   componentDidMount() {
-    this.props.dispatch(testAction());
+    this.props.dispatch(testAuthAction());
   }
 
   render() {

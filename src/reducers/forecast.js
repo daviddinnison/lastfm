@@ -58,7 +58,7 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case "TEST_ACTION": {
-        console.log('you are in the reducer')
+        console.log('you are in the forecast reducer')
       return Object.assign({}, state, {
         test: "THE TEST IS OVER"
       });
