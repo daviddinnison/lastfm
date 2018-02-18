@@ -1,7 +1,7 @@
 import { OTHER_ACTION } from "../actions/other";
 
 const initialState = {
-  other: null
+  other: "the other test begins"
 };
 
 export default function reducer(state = initialState, action) {

@@ -1,13 +1,13 @@
 import {createStore, applyMiddleware, combineReducers} from 'redux';
 import thunk from 'redux-thunk';
 
-import testReducer from './reducers/test';
+import artistReducer from './reducers/artist';
 import otherReducer from './reducers/other';
 
 
 const store = createStore(
     combineReducers({
-        test: testReducer,
+        artist: artistReducer,
         other: otherReducer
     }),
     applyMiddleware(thunk)

@@ -1,5 +1,6 @@
 //react
 import React from "react";
+import { connect } from "react-redux";
 
 //react native
 import {
@@ -9,6 +10,9 @@ import {
   TouchableHighlight,
   View
 } from "react-native";
+
+// actions
+import { getArtist } from "../../actions/artist";
 
 class MainSearch extends React.Component {
   constructor(props, context) {
@@ -25,28 +29,34 @@ class MainSearch extends React.Component {
       song: !this.state.song
     });
   }
-
+  componentDidMount() {
+    this.props.dispatch(getArtist("Lush"));
+  }
   render() {
     return (
       <View>
         <View>
           {/* toggles what is displayed as current selected search */}
           {this.state.artist && (
-            <TouchableHighlight><Text>ARTIST</Text></TouchableHighlight>
+            <TouchableHighlight>
+              <Text>ARTIST</Text>
+            </TouchableHighlight>
           )}
           {this.state.song && (
-            <TouchableHighlight><Text onPress={this.handleClick}>
-              artist
-            </Text></TouchableHighlight>
+            <TouchableHighlight>
+              <Text onPress={this.handleClick}>artist</Text>
+            </TouchableHighlight>
           )}
           {/* toggles what is displayed as other search */}
           {this.state.artist && (
-            <TouchableHighlight><Text onPress={this.handleClick}>
-            songs
-          </Text></TouchableHighlight>
+            <TouchableHighlight>
+              <Text onPress={this.handleClick}>songs</Text>
+            </TouchableHighlight>
           )}
           {this.state.song && (
-            <TouchableHighlight><Text>SONGS</Text></TouchableHighlight>
+            <TouchableHighlight>
+              <Text>SONGS</Text>
+            </TouchableHighlight>
           )}
         </View>
         <TextInput />
@@ -57,5 +67,11 @@ class MainSearch extends React.Component {
     );
   }
 }
+const mapStateToProps = function(state) {
+  return {
+    other: state.other.other
+  };
+};
 
-export default MainSearch;
+export default connect(mapStateToProps)(MainSearch);
+// export default MainSearch;

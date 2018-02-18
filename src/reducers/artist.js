@@ -1,7 +1,7 @@
-import { TEST_ACTION } from "../actions/test";
+import { TEST_ACTION } from "../actions/artist";
 
 const initialState = {
-  test: null
+  test: "test begins"
 };
 
 export default function reducer(state = initialState, action) {
