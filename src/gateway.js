@@ -1,21 +1,23 @@
+//react
 import React, { Component } from "react";
+
+//react-native
 import { StyleSheet, Text, View } from "react-native";
+import { Router, Stack, Scene } from 'react-native-router-flux';
+
+
+import Launch from "./components/launch";
 
 class Gateway extends Component {
-
   render() {
     return (
-      <View style={styles.app}>
-        <Text>Hi</Text>
-      </View>
+      <Router>
+        <Stack key="root">
+          <Scene key="launch" component={Launch} />
+        </Stack>
+      </Router>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  app: {
-    backgroundColor: "lightgrey"
-  }
-});
 
 export default Gateway;
