@@ -1,9 +1,10 @@
 //react
 import React from "react";
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 //react native
 import {
+  Keyboard,
   StyleSheet,
   Text,
   TextInput,
@@ -13,25 +14,33 @@ import {
 
 // actions
 import { getArtist } from "../../actions/artist";
-
+import { getTag } from "../../actions/tag";
 class MainSearch extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
       artist: true,
-      song: false
+      tag: false,
+      userInput: ""
     };
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick() {
     this.setState({
       artist: !this.state.artist,
-      song: !this.state.song
+      tag: !this.state.tag
     });
   }
-  componentDidMount() {
-    this.props.dispatch(getArtist("Lush"));
+
+  makeSearch() {
+    Keyboard.dismiss();
+    if (this.state.artist) {
+      this.props.dispatch(getArtist(this.state.userInput));
+    } else if (this.state.tag) {
+      this.props.dispatch(getTag(this.state.userInput));
+    }
   }
+
   render() {
     return (
       <View>
@@ -42,7 +51,7 @@ class MainSearch extends React.Component {
               <Text>ARTIST</Text>
             </TouchableHighlight>
           )}
-          {this.state.song && (
+          {this.state.tag && (
             <TouchableHighlight>
               <Text onPress={this.handleClick}>artist</Text>
             </TouchableHighlight>
@@ -50,28 +59,34 @@ class MainSearch extends React.Component {
           {/* toggles what is displayed as other search */}
           {this.state.artist && (
             <TouchableHighlight>
-              <Text onPress={this.handleClick}>songs</Text>
+              <Text onPress={this.handleClick}>tags</Text>
             </TouchableHighlight>
           )}
-          {this.state.song && (
+          {this.state.tag && (
             <TouchableHighlight>
-              <Text>SONGS</Text>
+              <Text>TAGS</Text>
             </TouchableHighlight>
           )}
         </View>
-        <TextInput />
-        <TouchableHighlight>
+        <TextInput
+          onChangeText={input => this.setState({ userInput: input })}
+        />
+        <TouchableHighlight
+          onPress={() => {
+            this.makeSearch();
+          }}
+        >
           <Text>Find</Text>
         </TouchableHighlight>
       </View>
     );
   }
 }
-const mapStateToProps = function(state) {
+
+const mapStateToProps = function (state) {
   return {
-    other: state.other.other
-  };
+    
+  }
 };
 
 export default connect(mapStateToProps)(MainSearch);
-// export default MainSearch;

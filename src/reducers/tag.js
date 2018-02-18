@@ -1,4 +1,4 @@
-import { OTHER_ACTION } from "../actions/other";
+import { OTHER_ACTION } from "../actions/tag";
 
 const initialState = {
   other: "the other test begins"

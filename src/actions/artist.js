@@ -7,7 +7,7 @@ export const testAction = () => ({
 
 export const getArtist = userInput => dispatch => {
   // dispatch(getHourlyForecastRequest());
-  console.log('made it to the action')
+  console.log('made it to the getArtist action')
   fetch(
     `http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=${userInput}&api_key=${API_KEY}&format=json`,
     {}
