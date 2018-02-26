@@ -1,14 +1,15 @@
-import { TEST_ACTION } from "../actions/artist";
+import { GET_ARTIST_SUCCESS } from "../actions/artist";
 
 const initialState = {
-  test: "test begins"
+  similarArtists: []
 };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case "TEST_ACTION": {
+    case "GET_ARTIST_SUCCESS": {
+      console.log("INSIDE REDUCER", action.data);
       return Object.assign({}, state, {
-        test: "THE TEST IS OVER"
+        similarArtists: action.data
       });
     }
     default:

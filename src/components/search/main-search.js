@@ -15,6 +15,7 @@ import {
 // actions
 import { getArtist } from "../../actions/artist";
 import { getTag } from "../../actions/tag";
+
 class MainSearch extends React.Component {
   constructor(props, context) {
     super(props, context);
