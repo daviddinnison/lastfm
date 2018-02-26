@@ -28,7 +28,7 @@ export const getArtist = userInput => dispatch => {
     })
     .then(data => {
       dispatch(getArtistSuccess(data.similarartists.artist))
-      Actions.artists();
+      Actions.similarArtists();
     })
 
     .catch(err => {

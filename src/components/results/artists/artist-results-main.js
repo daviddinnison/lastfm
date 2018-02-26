@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 
 // components
-import RenderedArtist from "./rendered-artist";
+import SimilarArtistResult from "./similar-artist-result";
 
 class ArtistResultsMain extends React.Component {
   componentDidMount() {
@@ -20,7 +20,7 @@ class ArtistResultsMain extends React.Component {
         data={this.props.similarArtists}
         keyExtractor={(item, index) => index}
         renderItem={({ item }) => (
-          <RenderedArtist name={item.name} match={item.match} />
+          <SimilarArtistResult name={item.name} match={item.match} image={item.image}/>
         )}
       />
     );
