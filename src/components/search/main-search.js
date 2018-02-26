@@ -22,10 +22,11 @@ class MainSearch extends React.Component {
     this.state = {
       artist: true,
       tag: false,
-      userInput: ""
+      userInput: "Lush"
     };
     this.handleClick = this.handleClick.bind(this);
   }
+  
   handleClick() {
     this.setState({
       artist: !this.state.artist,

@@ -3,7 +3,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 // react native
-import { StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 
 // components
 import RenderedArtist from "./rendered-artist";
@@ -15,20 +15,19 @@ class ArtistResultsMain extends React.Component {
   }
 
   renderResults() {
-    const artistsData = this.props.similarArtists.map((item, index) => (
-      <View key={item._id}>
-        <RenderedArtist name={item.name} match={item.match} />
-      </View>
-    ));
-    return <View>{artistsData}</View>;
+    return (
+      <FlatList
+        data={this.props.similarArtists}
+        keyExtractor={(item, index) => index}
+        renderItem={({ item }) => (
+          <RenderedArtist name={item.name} match={item.match} />
+        )}
+      />
+    );
   }
 
   render() {
-    return (
-      <View>
-        {this.renderResults()}
-      </View>
-    );
+    return <View>{this.renderResults()}</View>;
   }
 }
 
