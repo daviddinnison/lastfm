@@ -5,6 +5,7 @@ import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Router, Stack, Scene } from "react-native-router-flux";
 
+//components
 import Launch from "./components/launch";
 import ArtistResultsMain from "./components/results/artists/artist-results-main";
 

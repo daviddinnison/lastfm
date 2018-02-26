@@ -7,7 +7,6 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case "GET_ARTIST_SUCCESS": {
-      console.log("INSIDE REDUCER", action.data);
       return Object.assign({}, state, {
         similarArtists: action.data
       });

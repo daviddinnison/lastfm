@@ -27,7 +27,6 @@ export const getArtist = userInput => dispatch => {
       return res.json();
     })
     .then(data => {
-      console.log("succesful artist GET", data.similarartists.artist);
       dispatch(getArtistSuccess(data.similarartists.artist))
       Actions.artists();
     })
