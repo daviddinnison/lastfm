@@ -5,15 +5,20 @@ import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 
 //styles
-import styles from "./styles/single-artist-info";
+import styles from "../styles/main";
 
-class SingleArtistResult extends React.Component {
+//components
+import Bio from "./bio";
+import Tour from "./tour";
+import TagsComparison from "./tags-comparison";
+
+class ArtistInfoMain extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       error: null,
       loading: false,
-      data: {bio: {}}
+      data: { bio: {}, tags: [] }
     };
   }
 
@@ -47,10 +52,13 @@ class SingleArtistResult extends React.Component {
 
   renderData() {
     const data = this.state.data;
+    console.log("state data", this.state.data);
     return (
       <View>
         <Text style={styles.header}>{data.name}</Text>
-        <Text>{data.bio.summary}</Text>
+        <Bio bio={data.bio.summary} />
+        <Tour tour={data.ontour} />
+        <TagsComparison similarArtistTags={data.tags}/>
       </View>
     );
   }
@@ -68,4 +76,4 @@ class SingleArtistResult extends React.Component {
   }
 }
 
-export default SingleArtistResult;
+export default ArtistInfoMain;

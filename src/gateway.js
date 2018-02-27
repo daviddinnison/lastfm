@@ -8,7 +8,7 @@ import { Router, Stack, Scene } from "react-native-router-flux";
 //components
 import Launch from "./components/launch";
 import ArtistResultsMain from "./components/results/artists/artist-results-main";
-import SingleArtistInfo from "./components/results/artists/single-artist-info";
+import ArtistInfoMain from "./components/results/artists/info/artist-info-main";
 
 
 class Gateway extends Component {
@@ -18,7 +18,7 @@ class Gateway extends Component {
         <Stack key="root">
           <Scene key="launch" component={Launch} />
           <Scene key="similarArtists" component={ArtistResultsMain} />
-          <Scene key="artistInfo" component={SingleArtistInfo} />
+          <Scene key="artistInfo" component={ArtistInfoMain} />
         </Stack>
       </Router>
     );
