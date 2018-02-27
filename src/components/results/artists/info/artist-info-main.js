@@ -52,13 +52,12 @@ class ArtistInfoMain extends React.Component {
 
   renderData() {
     const data = this.state.data;
-    console.log("state data", this.state.data);
     return (
       <View>
         <Text style={styles.header}>{data.name}</Text>
         <Bio bio={data.bio.summary} />
         <Tour tour={data.ontour} />
-        <TagsComparison similarArtistTags={data.tags}/>
+        <TagsComparison tags={data.tags}/>
       </View>
     );
   }

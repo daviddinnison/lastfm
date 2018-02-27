@@ -8,9 +8,9 @@ export const testAction = () => ({
 });
 
 export const GET_ARTIST_SUCCESS = "GET_ARTIST_SUCCESS";
-export const getArtistSuccess = data => ({
+export const getArtistSuccess = (similarArtists) => ({
   type: GET_ARTIST_SUCCESS,
-  data
+  similarArtists
 });
 
 export const getArtist = userInput => dispatch => {
@@ -27,6 +27,7 @@ export const getArtist = userInput => dispatch => {
       return res.json();
     })
     .then(data => {
+      console.log('REDUCER DATA', data)
       dispatch(getArtistSuccess(data.similarartists.artist));
       dispatch(getTagComparison(userInput))
       Actions.similarArtists();

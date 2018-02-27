@@ -12,7 +12,7 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case "GET_ARTIST_SUCCESS": {
       return Object.assign({}, state, {
-        similarArtists: action.data
+        similarArtists: action.similarArtists
       });
     }
     case "GET_TAG_COMPARISON_SUCCESS": {
