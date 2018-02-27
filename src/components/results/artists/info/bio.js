@@ -1,24 +1,24 @@
 //react
 import React from "react";
+import { connect } from "react-redux";
 
 //react native
 import { StyleSheet, Text, View } from "react-native";
 
 class Bio extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: this.props.bio
-    };
-  }
-
   render() {
     return (
       <View>
-        <Text>{this.props.bio}</Text>
+        <Text>{this.props.bio.summary}</Text>
       </View>
     );
   }
 }
 
-export default Bio;
+const mapStateToProps = state => {
+  return {
+    bio: state.artist.similarArtistInfo.bio
+  };
+};
+
+export default connect(mapStateToProps)(Bio);

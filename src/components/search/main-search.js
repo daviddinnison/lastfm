@@ -13,7 +13,7 @@ import {
 } from "react-native";
 
 // actions
-import { getArtist } from "../../actions/artist";
+import { getSimilarArtist } from "../../actions/artist";
 import { getTag } from "../../actions/tag";
 
 class MainSearch extends React.Component {
@@ -37,7 +37,7 @@ class MainSearch extends React.Component {
   makeSearch() {
     Keyboard.dismiss();
     if (this.state.artist) {
-      this.props.dispatch(getArtist(this.state.userInput));
+      this.props.dispatch(getSimilarArtist(this.state.userInput));
     } else if (this.state.tag) {
       this.props.dispatch(getTag(this.state.userInput));
     }

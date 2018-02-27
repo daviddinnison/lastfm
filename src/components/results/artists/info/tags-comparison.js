@@ -6,37 +6,32 @@ import { connect } from "react-redux";
 import { StyleSheet, Text, View } from "react-native";
 
 class TagsComparison extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      baseTags: [],
-      otherArtistTags: {tags: []} 
-    };
-  }
-
   renderComparison() {
-    const compareToRaw = this.props.tags.tag;//THIS IS UNDEFINED!!!!!
+    // comparing tags in common. convert array of objects into arrays of tags.
     const baseRaw = this.props.baseComparisonTags.tag;
+    const compareToRaw = this.props.similarArtistTags.tag;
 
-    console.log(compareToRaw, "compareToRaw");
     let compareTo = [];
     let base = [];
+
     for (let i = 0; i < baseRaw.length; i++) {
       base.push(baseRaw[i].name);
     }
-  
+
     for (let i = 0; i < compareToRaw.length; i++) {
       compareTo.push(compareToRaw[i].name);
     }
-  
+
     console.log(compareTo, "similarArtistTags inside renderComparison");
     console.log(base, "baseComparisonTags inside renderComparison");
-    console.log(compareTo, "compareTo tags inside renderComapriasonb");
-    
 
   }
 
   render() {
+    console.log(
+      this.props.similarArtistTags,
+      "-------11111------similartags0000000"
+    );
     return (
       <View>
         <Text>hello there are tags here</Text>
@@ -48,7 +43,8 @@ class TagsComparison extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    baseComparisonTags: state.artist.baseComparisonTags
+    baseComparisonTags: state.artist.baseComparisonTags,
+    similarArtistTags: state.artist.similarArtistInfo.tags
   };
 };
 

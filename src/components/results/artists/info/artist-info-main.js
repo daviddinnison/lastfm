@@ -1,16 +1,20 @@
 //react
 import React from "react";
+import { connect } from "react-redux";
 
 //react native
 import { Image, StyleSheet, Text, View } from "react-native";
-
-//styles
-import styles from "../styles/main";
 
 //components
 import Bio from "./bio";
 import Tour from "./tour";
 import TagsComparison from "./tags-comparison";
+
+//actions
+import { getArtistInfo } from "../../../../actions/artist";
+
+//styles
+import styles from "../styles/main";
 
 class ArtistInfoMain extends React.Component {
   constructor(props) {
@@ -23,41 +27,18 @@ class ArtistInfoMain extends React.Component {
   }
 
   componentDidMount() {
-    const API_KEY = "a6be694f222c3e5ee8f11ab1c626bd00";
-    this.setState({ loading: true });
-    fetch(
-      `http://ws.audioscrobbler.com/2.0/?method=artist.getInfo&artist=${
-        this.props.route
-      }&api_key=${API_KEY}&format=json`,
-      {}
-    )
-      .then(res => {
-        if (!res.ok) {
-          throw new Error(res.statusText);
-        }
-        return res.json();
-      })
-      .then(
-        result => {
-          this.setState({
-            loading: false,
-            data: result.artist
-          });
-        },
-        error => {
-          this.setState({ loading: false, error });
-        }
-      );
+    this.props.dispatch(getArtistInfo(this.props.route));
   }
 
   renderData() {
-    const data = this.state.data;
+    console.log(this.props.similarArtistInfo, 'ARTIST INFO PROPS IN COMPONENT')
+    const data = this.props.similarArtistInfo;
     return (
       <View>
         <Text style={styles.header}>{data.name}</Text>
         <Bio bio={data.bio.summary} />
-        <Tour tour={data.ontour} />
-        <TagsComparison tags={data.tags}/>
+        {/* <Tour tour={data.ontour} /> */}
+        <TagsComparison/>
       </View>
     );
   }
@@ -75,4 +56,10 @@ class ArtistInfoMain extends React.Component {
   }
 }
 
-export default ArtistInfoMain;
+const mapStateToProps = state => {
+  return {
+    similarArtistInfo: state.artist.similarArtistInfo
+  };
+};
+
+export default connect(mapStateToProps)(ArtistInfoMain);
