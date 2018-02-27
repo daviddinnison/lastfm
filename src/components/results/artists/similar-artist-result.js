@@ -10,10 +10,9 @@ import styles from "./styles/rendered-artist"
 
 class SimilarArtistResult extends React.Component {
   render() {
-    console.log(this.props.image[0].text)
     return (
       <View style={styles.container}>
-        <Text style={styles.header} onPress={() => {  Actions.artistInfo() }}>{this.props.name}</Text>
+        <Text style={styles.header} onPress={() => {  Actions.artistInfo({route: this.props.name}) }}>{this.props.name}</Text>
         <Text>{this.props.match}% match</Text>
         <Image source={this.props.image[0].text}/>
       </View>

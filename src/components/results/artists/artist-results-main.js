@@ -9,10 +9,6 @@ import { FlatList, StyleSheet, Text, View } from "react-native";
 import SimilarArtistResult from "./similar-artist-result";
 
 class ArtistResultsMain extends React.Component {
-  componentDidMount() {
-    console.log("HERE ARE THE ARTIST RESULTS MAIN PROPS!!!!!");
-    console.log(this.props.similarArtists);
-  }
 
   renderResults() {
     return (
