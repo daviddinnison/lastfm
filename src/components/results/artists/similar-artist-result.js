@@ -13,8 +13,8 @@ class SimilarArtistResult extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.header} onPress={() => {  Actions.artistInfo({route: this.props.name}) }}>{this.props.name}</Text>
-        <Text>{this.props.match}% match</Text>
-        <Image source={this.props.image[0].text}/>
+        <Text>{(this.props.match * 100).toFixed(2)}% match</Text>
+        {/* <Image source={this.props.image[0].text}/> */}
       </View>
     );
   }

@@ -21,7 +21,8 @@ export const padding = {
 export const fonts = {
   sm: 12,
   md: 18,
-  lg: 28,
+  lg: 22,
+  xl: 28,
   primary: "Cochin"
 };
 
@@ -33,7 +34,13 @@ const baseStyles = {
   },
   header: {
     backgroundColor: "transparent",
-    fontSize: fonts.lg,
+    fontSize: fonts.xl,
+    fontFamily: fonts.primary,
+    fontWeight: "bold"
+  },
+  subheader: {
+    backgroundColor: "transparent",
+    fontSize: fonts.md,
     fontFamily: fonts.primary,
     fontWeight: "bold"
   },

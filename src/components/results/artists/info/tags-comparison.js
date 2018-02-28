@@ -5,6 +5,9 @@ import { connect } from "react-redux";
 // react native
 import { StyleSheet, Text, View } from "react-native";
 
+// styles
+import styles from "./styles/main";
+
 class TagsComparison extends React.Component {
   constructor(props) {
     super(props);
@@ -38,13 +41,17 @@ class TagsComparison extends React.Component {
     }
 
     //MAP FUNCTION FOR COMMON TAGS
-    const renderCommonTags = commonTags.map((item, index) => <Text key={index}>{item}</Text>);
+    const renderCommonTags = commonTags.map((item, index) => (
+      <Text key={index}>{item}</Text>
+    ));
     //RETURN MAP FUNCTION
-    return <View>{renderCommonTags}</View>
+    return <Text>{renderCommonTags}</Text>;
   }
 
   render() {
-    return <View>{this.renderComparison()}</View>;
+    return <View>
+    <Text style={styles.subheader}>Common tags</Text>
+    {this.renderComparison()}</View>;
   }
 }
 
