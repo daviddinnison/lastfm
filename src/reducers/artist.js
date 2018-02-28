@@ -1,11 +1,13 @@
 import {
   GET_SIMILAR_ARTIST_SUCCESS,
+  SAVE_ORIGINAL_ARTIST,
   GET_ARTIST_INFO_SUCCESS,
   GET_TAG_COMPARISON_SUCCESS
 } from "../actions/artist";
 
 const initialState = {
   baseComparisonTags: [],
+  orginalArtist: "",
   similarArtists: [],
   similarArtistInfo: { bio: {}, tags: { tag: [{ name: "" }] } }
 };
@@ -15,6 +17,11 @@ export default function reducer(state = initialState, action) {
     case "GET_SIMILAR_ARTIST_SUCCESS": {
       return Object.assign({}, state, {
         similarArtists: action.similarArtists
+      });
+    }
+    case "SAVE_ORIGINAL_ARTIST": {
+      return Object.assign({}, state, {
+        originalArtist: action.originalArtist
       });
     }
     case "GET_ARTIST_INFO_SUCCESS": {

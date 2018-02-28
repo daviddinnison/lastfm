@@ -1,5 +1,6 @@
 //react
 import React from "react";
+import { connect } from "react-redux";
 
 //react native
 import { StyleSheet, Text, View } from "react-native";
@@ -17,4 +18,10 @@ class Tour extends React.Component {
   }
 }
 
-export default Tour;
+const mapStateToProps = state => {
+  return {
+    tour: state.artist.similarArtistInfo.ontour
+  };
+};
+
+export default connect(mapStateToProps)(Tour);

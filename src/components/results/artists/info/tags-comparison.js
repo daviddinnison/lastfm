@@ -50,7 +50,7 @@ class TagsComparison extends React.Component {
 
   render() {
     return <View>
-    <Text style={styles.subheader}>Common tags</Text>
+    <Text style={styles.subheader}>Common tags with {this.props.originalArtist}</Text>
     {this.renderComparison()}</View>;
   }
 }
@@ -58,6 +58,7 @@ class TagsComparison extends React.Component {
 const mapStateToProps = state => {
   return {
     baseComparisonTags: state.artist.baseComparisonTags,
+    originalArtist: state.artist.originalArtist,
     similarArtistTags: state.artist.similarArtistInfo.tags
   };
 };

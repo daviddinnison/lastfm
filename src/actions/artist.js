@@ -8,6 +8,12 @@ export const getSimilarArtistSuccess = (similarArtists) => ({
   similarArtists
 });
 
+export const SAVE_ORIGINAL_ARTIST = "SAVE_ORIGINAL_ARTIST";
+export const saveOriginalArtist = (originalArtist) => ({
+  type: SAVE_ORIGINAL_ARTIST,
+  originalArtist
+});
+
 export const getSimilarArtist = userInput => dispatch => {
   // dispatch(getHourlyForecastRequest());
   fetch(
@@ -22,6 +28,7 @@ export const getSimilarArtist = userInput => dispatch => {
       return res.json();
     })
     .then(data => {
+      dispatch(saveOriginalArtist(userInput));
       dispatch(getSimilarArtistSuccess(data.similarartists.artist));
       dispatch(getTagComparison(userInput))
       Actions.similarArtists();

@@ -36,8 +36,8 @@ class ArtistInfoMain extends React.Component {
     return (
       <View>
         <Text style={styles.header}>{data.name}</Text>
-        <Bio bio={data.bio.summary} />
-        {/* <Tour tour={data.ontour} /> */}
+        <Bio />
+        <Tour />
         <TagsComparison/>
       </View>
     );
