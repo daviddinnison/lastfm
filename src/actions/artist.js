@@ -98,3 +98,33 @@ export const getTagComparison = userInput => dispatch => {
       // dispatch(getHourlyForecastError(err));
     });
 };
+
+export const GET_TOP_TRACKS_SUCCESS = "GET_TOP_TRACKS_SUCCESS";
+export const getTopTracksSuccess = data => ({
+  type: GET_TOP_TRACKS_SUCCESS,
+  data
+});
+
+
+export const getTopTracks = userInput => dispatch => {
+  // dispatch(getHourlyForecastRequest());
+  fetch(
+    `${API_BASE_URL}?method=artist.gettoptracks&artist=${userInput}&api_key=${API_KEY}&format=json`,
+    {}
+  )
+    .then(res => {
+      if (!res.ok) {
+        console.log("bad response");
+        throw new Error(res.statusText);
+      }
+      return res.json();
+    })
+    .then(data => {
+      dispatch(getTopTracksSuccess(data.toptracks.track));
+    })
+
+    .catch(err => {
+      console.log("ended up in a error catch", err);
+      // dispatch(getHourlyForecastError(err));
+    });
+};

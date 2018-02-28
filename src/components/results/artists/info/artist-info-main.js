@@ -7,14 +7,15 @@ import { Image, StyleSheet, Text, View } from "react-native";
 
 //components
 import Bio from "./bio";
-import Tour from "./tour";
 import TagsComparison from "./tags-comparison";
-
-//actions
-import { getArtistInfo } from "../../../../actions/artist";
+import Tour from "./tour";
+import Tracks from "./tracks";
 
 //styles
 import styles from "./styles/main";
+
+//actions
+import { getArtistInfo, getTopTracks } from "../../../../actions/artist";
 
 class ArtistInfoMain extends React.Component {
   constructor(props) {
@@ -28,16 +29,17 @@ class ArtistInfoMain extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(getArtistInfo(this.props.route));
+    this.props.dispatch(getTopTracks(this.props.route))
   }
 
   renderData() {
-    console.log(this.props.similarArtistInfo, 'ARTIST INFO PROPS IN COMPONENT')
     const data = this.props.similarArtistInfo;
     return (
       <View style={styles.mainSection}>
         <Text style={styles.header}>{data.name}</Text>
-        <TagsComparison/>
+        <TagsComparison />
         <Tour />
+        <Tracks/>
         <Bio />
       </View>
     );
