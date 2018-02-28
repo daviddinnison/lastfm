@@ -8,10 +8,13 @@ import { Actions } from "react-native-router-flux";
 // components
 import MainSearch from "./search/main-search";
 
+// styles
+import styles from "./styles/main";
+
 class Launch extends React.Component {
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Text>Welcome!!!!</Text>
         <MainSearch />
       </View>

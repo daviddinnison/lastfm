@@ -15,6 +15,7 @@ class TagsComparison extends React.Component {
       commonTags: []
     };
   }
+  
   renderComparison() {
     // comparing tags in common. convert array of objects into arrays of tags.
     const baseRaw = this.props.baseComparisonTags.tag;

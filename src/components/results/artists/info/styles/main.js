@@ -1,6 +1,10 @@
-import createStyles, { fonts, colors } from "../../../../baseStyles";
+import createStyles, { fonts, colors, padding } from "../../../../baseStyles";
 export default (singleArtistInfo = createStyles({
-  tags: {
-    marginBottom: 50
+  
+  onTour: {
+    color: colors.affirmative
+  },
+  notTouring: {
+    color: colors.negative
   }
 }));

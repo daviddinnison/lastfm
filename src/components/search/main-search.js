@@ -20,56 +20,19 @@ class MainSearch extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      artist: true,
-      tag: false,
-      userInput: "Lush"
+      userInput: "My Bloody Valentine"
     };
-    this.handleClick = this.handleClick.bind(this);
   }
   
-  handleClick() {
-    this.setState({
-      artist: !this.state.artist,
-      tag: !this.state.tag
-    });
-  }
-
   makeSearch() {
     Keyboard.dismiss();
-    if (this.state.artist) {
-      this.props.dispatch(getSimilarArtist(this.state.userInput));
-    } else if (this.state.tag) {
-      this.props.dispatch(getTag(this.state.userInput));
-    }
+    this.props.dispatch(getSimilarArtist(this.state.userInput));
   }
 
   render() {
     return (
       <View>
-        <View>
-          {/* toggles what is displayed as current selected search */}
-          {this.state.artist && (
-            <TouchableHighlight>
-              <Text>ARTIST</Text>
-            </TouchableHighlight>
-          )}
-          {this.state.tag && (
-            <TouchableHighlight>
-              <Text onPress={this.handleClick}>artist</Text>
-            </TouchableHighlight>
-          )}
-          {/* toggles what is displayed as other search */}
-          {this.state.artist && (
-            <TouchableHighlight>
-              <Text onPress={this.handleClick}>tags</Text>
-            </TouchableHighlight>
-          )}
-          {this.state.tag && (
-            <TouchableHighlight>
-              <Text>TAGS</Text>
-            </TouchableHighlight>
-          )}
-        </View>
+        
         <TextInput
           onChangeText={input => this.setState({ userInput: input })}
         />
@@ -85,10 +48,5 @@ class MainSearch extends React.Component {
   }
 }
 
-const mapStateToProps = function (state) {
-  return {
-    
-  }
-};
 
-export default connect(mapStateToProps)(MainSearch);
+export default connect()(MainSearch);

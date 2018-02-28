@@ -8,10 +8,13 @@ export const dimensions = {
 export const colors = {
   primary: "#226B74",
   secondary: "#254B5A",
-  tertiary: "#5DA6A7"
+  tertiary: "#5DA6A7",
+  affirmative: "#008000",
+  negative: "#800000"
 };
 
 export const padding = {
+  xs: 5,
   sm: 10,
   md: 20,
   lg: 30,
@@ -44,9 +47,12 @@ const baseStyles = {
     fontFamily: fonts.primary,
     fontWeight: "bold"
   },
-  section: {
-    paddingVertical: padding.lg,
-    paddingHorizontal: padding.xl
+  mainSection: {
+    paddingVertical: padding.xs,
+    paddingHorizontal: padding.xs
+  },
+  mainText: {
+    fontFamily: fonts.primary
   }
 };
 

@@ -14,7 +14,7 @@ import TagsComparison from "./tags-comparison";
 import { getArtistInfo } from "../../../../actions/artist";
 
 //styles
-import styles from "../styles/main";
+import styles from "./styles/main";
 
 class ArtistInfoMain extends React.Component {
   constructor(props) {
@@ -34,11 +34,11 @@ class ArtistInfoMain extends React.Component {
     console.log(this.props.similarArtistInfo, 'ARTIST INFO PROPS IN COMPONENT')
     const data = this.props.similarArtistInfo;
     return (
-      <View>
+      <View style={styles.mainSection}>
         <Text style={styles.header}>{data.name}</Text>
-        <Bio />
-        <Tour />
         <TagsComparison/>
+        <Tour />
+        <Bio />
       </View>
     );
   }

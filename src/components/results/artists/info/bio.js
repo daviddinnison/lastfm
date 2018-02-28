@@ -5,11 +5,14 @@ import { connect } from "react-redux";
 //react native
 import { StyleSheet, Text, View } from "react-native";
 
+// styles
+import styles from "./styles/main";
+
 class Bio extends React.Component {
   render() {
     return (
       <View>
-        <Text>{this.props.bio.summary}</Text>
+        <Text style={styles.mainText}>{this.props.bio.summary}</Text>
       </View>
     );
   }
