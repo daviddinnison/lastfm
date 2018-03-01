@@ -11,6 +11,7 @@ import SimilarArtistResult from "./similar-artist-result";
 class ArtistResultsMain extends React.Component {
 
   renderResults() {
+    console.log("SIMILAR ARTISTS type 777777", typeof this.props.similarArtists)
     return (
       <FlatList
         data={this.props.similarArtists}

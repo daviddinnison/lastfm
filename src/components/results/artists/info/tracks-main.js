@@ -16,32 +16,22 @@ import { getTopTracks } from "../../../../actions/artist";
 
 class TracksMain extends React.Component {
   renderTracks() {
-    const pretend = [
-      { name: "Kailee" },
-      { name: "Desmond" },
-      { name: "Murphy" },
-      { name: "Jewell" },
-      { name: "Stanley" }
-      
-    ];
+    let topTenTracks = this.props.similarArtistTopTracks;
+
     return (
       <FlatList
         horizontal={true}
-        data={pretend}
+        data={topTenTracks.slice(0, 9)}
         keyExtractor={(item, index) => index}
-        renderItem={({ item }) => <TracksRendered name={item.name} />}
+        renderItem={({ item }) => <TracksRendered name={item.name} playcount={item.playcount}/>}
       />
     );
   }
 
   render() {
-    console.log(
-      "TracksMain COMPONENT......PROPS!!!",
-      this.props.similarArtistTopTracks
-    );
     return (
       <View>
-        <Text>HELLO tracks here--------</Text>
+        <Text style={styles.subheader}>Top Artist Tracks</Text>
         {this.renderTracks()}
       </View>
     );

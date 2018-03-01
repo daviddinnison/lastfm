@@ -10,6 +10,7 @@ class TracksRendered extends React.Component {
     return (
       <View>
         <Text>{this.props.name}</Text>
+        <Text>plays: {this.props.playcount}</Text>
       </View>
     );
   }
