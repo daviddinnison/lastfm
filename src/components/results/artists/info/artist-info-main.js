@@ -9,7 +9,7 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import Bio from "./bio";
 import TagsComparison from "./tags-comparison";
 import Tour from "./tour";
-import Tracks from "./tracks";
+import TracksMain from "./tracks-main";
 
 //styles
 import styles from "./styles/main";
@@ -39,7 +39,7 @@ class ArtistInfoMain extends React.Component {
         <Text style={styles.header}>{data.name}</Text>
         <TagsComparison />
         <Tour />
-        <Tracks/>
+        <TracksMain />
         <Bio />
       </View>
     );
