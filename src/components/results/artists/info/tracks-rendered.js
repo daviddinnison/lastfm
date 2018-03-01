@@ -1,18 +1,19 @@
-//react
+// react
 import React from "react";
 
-//react native
+// react native
 import { StyleSheet, Text, View } from "react-native";
 
+// styles
+import styles from "./styles/main";
 
 class TracksRendered extends React.Component {
   render() {
-    return (
-      <View>
-        <Text>{this.props.name}</Text>
-        <Text>plays: {this.props.playcount}</Text>
-      </View>
-    );
+    
+    return <View style={styles.trackContainer}>
+        <Text style={styles.trackName}>{this.props.name}</Text>
+        <Text style={styles.trackPlays}>plays: {this.props.playcount.toLocaleString()}</Text>
+      </View>;
   }
 }
 

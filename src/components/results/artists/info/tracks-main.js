@@ -17,13 +17,15 @@ import { getTopTracks } from "../../../../actions/artist";
 class TracksMain extends React.Component {
   renderTracks() {
     let topTenTracks = this.props.similarArtistTopTracks;
-
+    console.log("TOP TRACKS", this.props.similarArtistTopTracks);
     return (
       <FlatList
         horizontal={true}
         data={topTenTracks.slice(0, 9)}
         keyExtractor={(item, index) => index}
-        renderItem={({ item }) => <TracksRendered name={item.name} playcount={item.playcount}/>}
+        renderItem={({ item }, index) => (
+          <TracksRendered name={item.name} playcount={Number(item.playcount)} />
+        )}
       />
     );
   }
