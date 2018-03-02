@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { Image, StyleSheet, Text, View } from "react-native";
 
 //components
+import AlbumsMain from "./albums-main";
 import Bio from "./bio";
 import TagsComparison from "./tags-comparison";
 import Tour from "./tour";
@@ -16,17 +17,15 @@ import Loader from "../../../common/loader";
 import styles from "./styles/main";
 
 //actions
-import { getArtistInfo, getTopTracks } from "../../../../actions/artist";
+import { getArtistInfo } from "../../../../actions/artist";
 
 class ArtistInfoMain extends React.Component {
-
   componentDidMount() {
     this.props.dispatch(getArtistInfo(this.props.route));
   }
 
   renderData() {
     const data = this.props.similarArtistInfo;
-    console.log("DATA", this.props.similarArtistInfo.image);
     return (
       <View style={styles.mainSection}>
         <Text style={styles.header}>{data.name}</Text>
@@ -34,9 +33,9 @@ class ArtistInfoMain extends React.Component {
           style={{ width: 162, height: 162 }}
           source={{ uri: this.props.similarArtistInfo.image[2]["#text"] }}
         />
-
         <TagsComparison />
         <Tour />
+        <AlbumsMain />
         <TracksMain />
         <Bio />
       </View>

@@ -32,6 +32,7 @@ export const getSimilarArtist = userInput => dispatch => {
       dispatch(getSimilarArtistSuccess(data.similarartists.artist));
       dispatch(getTagComparison(userInput))
       dispatch(getTopTracks(userInput));
+      dispatch(getTopAlbums(userInput));
       Actions.similarArtists();
     })
 
@@ -132,6 +133,38 @@ export const getTopTracks = userInput => dispatch => {
     })
     .then(data => {
       dispatch(getTopTracksSuccess(data.toptracks.track));
+    })
+
+    .catch(err => {
+      console.log("ended up in a error catch", err);
+      // dispatch(getHourlyForecastError(err));
+    });
+};
+
+export const GET_TOP_ALBUMS_REQUEST = "GET_TOP_ALBUMS_REQUEST";
+export const getTopAlbumsRequest = () => ({
+  type: GET_TOP_ALBUMS_SUCCESS,
+});
+
+export const GET_TOP_ALBUMS_SUCCESS = "GET_TOP_ALBUMS_SUCCESS";
+export const getTopAlbumsSuccess = data => ({
+  type: GET_TOP_ALBUMS_SUCCESS,
+  data
+});
+
+
+export const getTopAlbums = userInput => dispatch => {
+  dispatch(getTopAlbumsRequest());
+  fetch(`${API_BASE_URL}?method=artist.gettopalbums&artist=${userInput}&api_key=${API_KEY}&format=json`, {})
+    .then(res => {
+      if (!res.ok) {
+        console.log("bad response");
+        throw new Error(res.statusText);
+      }
+      return res.json();
+    })
+    .then(data => {
+      dispatch(getTopAlbumsSuccess(data.topalbums.album));
     })
 
     .catch(err => {

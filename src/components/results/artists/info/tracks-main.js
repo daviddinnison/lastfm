@@ -11,13 +11,9 @@ import TracksRendered from "./tracks-rendered";
 // styles
 import styles from "./styles/main";
 
-//actions
-import { getTopTracks } from "../../../../actions/artist";
-
 class TracksMain extends React.Component {
   renderTracks() {
     let topTenTracks = this.props.similarArtistTopTracks;
-    console.log("TOP TRACKS", this.props.similarArtistTopTracks);
     return (
       <FlatList
         horizontal={true}
