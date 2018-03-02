@@ -12,7 +12,7 @@ class Bio extends React.Component {
   render() {
     return (
       <View>
-        <Text style={styles.mainText}>{this.props.bio.summary}</Text>
+        <Text style={styles.mainText}>{this.props.bio.content}</Text>
       </View>
     );
   }

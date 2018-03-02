@@ -3,7 +3,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 //react native
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 
 //components
 import AlbumsMain from "./albums-main";
@@ -27,7 +27,7 @@ class ArtistInfoMain extends React.Component {
   renderData() {
     const data = this.props.similarArtistInfo;
     return (
-      <View style={styles.mainSection}>
+      <ScrollView style={styles.mainSection}>
         <Text style={styles.header}>{data.name}</Text>
         <Image
           style={{ width: 162, height: 162 }}
@@ -38,7 +38,7 @@ class ArtistInfoMain extends React.Component {
         <AlbumsMain />
         <TracksMain />
         <Bio />
-      </View>
+      </ScrollView>
     );
   }
 

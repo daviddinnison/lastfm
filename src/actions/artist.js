@@ -28,6 +28,9 @@ export const getSimilarArtist = userInput => dispatch => {
       return res.json();
     })
     .then(data => {
+      console.log(data, "DATA being passed in")
+      console.log("USER INPUT that is being passed in ", userInput)
+      console.log("WHAT SHOULD be the similar artist being passed in", data.similarArtists.artist)
       dispatch(saveOriginalArtist(userInput));
       dispatch(getSimilarArtistSuccess(data.similarartists.artist));
       dispatch(getTagComparison(userInput))
@@ -37,7 +40,7 @@ export const getSimilarArtist = userInput => dispatch => {
     })
 
     .catch(err => {
-      console.log("ended up in a error catch");
+      console.log("ended up in a error catch", err);
       // dispatch(getHourlyForecastError(err));
     });
 };
@@ -71,7 +74,7 @@ export const getArtistInfo = userInput => dispatch => {
     })
 
     .catch(err => {
-      console.log("ended up in a error catch");
+      console.log("ended up in a error catch", err);
       // dispatch(getHourlyForecastError(err));
     });
 };

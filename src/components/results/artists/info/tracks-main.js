@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 
 // compopnents
+import Loader from "../../../common/loader";
 import TracksRendered from "./tracks-rendered";
 
 // styles
@@ -13,17 +14,24 @@ import styles from "./styles/main";
 
 class TracksMain extends React.Component {
   renderTracks() {
-    let topTenTracks = this.props.similarArtistTopTracks;
-    return (
-      <FlatList
-        horizontal={true}
-        data={topTenTracks.slice(0, 9)}
-        keyExtractor={(item, index) => index}
-        renderItem={({ item }, index) => (
-          <TracksRendered name={item.name} playcount={Number(item.playcount)} />
-        )}
-      />
-    );
+    if (this.props.loadingTopTracks) {
+      return <Loader />;
+    } else {
+      let topTenTracks = this.props.similarArtistTopTracks;
+      return (
+        <FlatList
+          horizontal={true}
+          data={topTenTracks.slice(0, 9)}
+          keyExtractor={(item, index) => index}
+          renderItem={({ item }, index) => (
+            <TracksRendered
+              name={item.name}
+              playcount={Number(item.playcount)}
+            />
+          )}
+        />
+      );
+    }
   }
 
   render() {
@@ -37,7 +45,10 @@ class TracksMain extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { similarArtistTopTracks: state.artist.similarArtistTopTracks };
+  return {
+    loadingTopTracks: state.artist.loading.topTracks,
+    similarArtistTopTracks: state.artist.similarArtistTopTracks
+  };
 };
 
 export default connect(mapStateToProps)(TracksMain);
