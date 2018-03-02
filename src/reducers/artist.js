@@ -10,8 +10,13 @@ const initialState = {
   baseComparisonTags: [],
   orginalArtist: "",
   similarArtists: [],
-  similarArtistInfo: { bio: {}, tags: { tag: [{ name: "" }] }, name: "" },
-  similarArtistTopTracks: [{name: ""}]
+  similarArtistInfo: {
+    bio: {},
+    tags: { tag: [{ name: "" }] },
+    name: "",
+    image: [["#text"]]
+  },
+  similarArtistTopTracks: [{ name: "" }]
 };
 
 export default function reducer(state = initialState, action) {

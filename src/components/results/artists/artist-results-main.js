@@ -9,15 +9,18 @@ import { FlatList, StyleSheet, Text, View } from "react-native";
 import SimilarArtistResult from "./similar-artist-result";
 
 class ArtistResultsMain extends React.Component {
-
   renderResults() {
-    console.log("SIMILAR ARTISTS type 777777", typeof this.props.similarArtists)
+    console.log(this.props.similarArtists, "SIMILAR ARTIST DATA");
     return (
       <FlatList
         data={this.props.similarArtists}
         keyExtractor={(item, index) => index}
         renderItem={({ item }) => (
-          <SimilarArtistResult name={item.name} match={item.match} image={item.image}/>
+          <SimilarArtistResult
+            name={item.name}
+            match={item.match}
+            image={item.image}
+          />
         )}
       />
     );

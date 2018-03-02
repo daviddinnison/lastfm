@@ -34,15 +34,16 @@ class ArtistInfoMain extends React.Component {
 
   renderData() {
     const data = this.props.similarArtistInfo;
-    return (
-      <View style={styles.mainSection}>
+    console.log("DATA", this.props.similarArtistInfo.image)
+    return <View style={styles.mainSection}>
         <Text style={styles.header}>{data.name}</Text>
-        <TagsComparison />
+        <Image style={{ width: 50, height: 50 }} source={{ uri: this.props.similarArtistInfo.image[0]["#text"] }} />
+
+        {/* <TagsComparison /> */}
         <Tour />
         <TracksMain />
         <Bio />
-      </View>
-    );
+      </View>;
   }
 
   loadingData() {
@@ -60,7 +61,8 @@ class ArtistInfoMain extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    similarArtistInfo: state.artist.similarArtistInfo
+    similarArtistInfo: state.artist.similarArtistInfo,
+    imageUri: state.artist.imageUri
   };
 };
 
