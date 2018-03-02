@@ -1,13 +1,16 @@
 import {
   GET_SIMILAR_ARTIST_SUCCESS,
   SAVE_ORIGINAL_ARTIST,
+  GET_ARTIST_INFO_REQUEST,
   GET_ARTIST_INFO_SUCCESS,
   GET_TAG_COMPARISON_SUCCESS,
+  GET_TOP_TRACKS_REQUEST,
   GET_TOP_TRACKS_SUCCESS
 } from "../actions/artist";
 
 const initialState = {
   baseComparisonTags: [],
+  loading: { artistInfo: true, topTracks: true },
   orginalArtist: "",
   similarArtists: [],
   similarArtistInfo: {
@@ -31,17 +34,41 @@ export default function reducer(state = initialState, action) {
         originalArtist: action.originalArtist
       });
     }
+    case "GET_ARTIST_INFO_REQUEST": {
+      return Object.assign({}, state, {
+        loading: {
+          ...state.loading,
+          artistInfo: true
+        }
+      });
+    }
     case "GET_ARTIST_INFO_SUCCESS": {
       return Object.assign({}, state, {
-        similarArtistInfo: action.artistInfo
+        similarArtistInfo: action.artistInfo,
+        loading: {
+          ...state.loading,
+          artistInfo: false
+        }
       });
     }
     case "GET_TAG_COMPARISON_SUCCESS": {
       return Object.assign({}, state, { baseComparisonTags: action.data });
     }
+    case "GET_TOP_TRACKS_REQUEST": {
+      return Object.assign({}, state, {
+        loading: {
+          ...state.loading,
+          topTracks: true
+        }
+      });
+    }
     case "GET_TOP_TRACKS_SUCCESS": {
       return Object.assign({}, state, {
-        similarArtistTopTracks: action.data
+        similarArtistTopTracks: action.data,
+        loading: {
+          ...state.loading,
+          topTracks: false
+        }
       });
     }
     default:

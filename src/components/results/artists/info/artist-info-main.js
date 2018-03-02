@@ -10,6 +10,7 @@ import Bio from "./bio";
 import TagsComparison from "./tags-comparison";
 import Tour from "./tour";
 import TracksMain from "./tracks-main";
+import Loader from "../../../common/loader";
 
 //styles
 import styles from "./styles/main";
@@ -18,38 +19,34 @@ import styles from "./styles/main";
 import { getArtistInfo, getTopTracks } from "../../../../actions/artist";
 
 class ArtistInfoMain extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      loading: false,
-      data: { bio: {}, tags: [] }
-    };
-  }
 
   componentDidMount() {
     this.props.dispatch(getArtistInfo(this.props.route));
-    this.props.dispatch(getTopTracks(this.props.route))
   }
 
   renderData() {
     const data = this.props.similarArtistInfo;
-    console.log("DATA", this.props.similarArtistInfo.image)
-    return <View style={styles.mainSection}>
+    console.log("DATA", this.props.similarArtistInfo.image);
+    return (
+      <View style={styles.mainSection}>
         <Text style={styles.header}>{data.name}</Text>
-        <Image style={{ width: 50, height: 50 }} source={{ uri: this.props.similarArtistInfo.image[0]["#text"] }} />
+        <Image
+          style={{ width: 162, height: 162 }}
+          source={{ uri: this.props.similarArtistInfo.image[2]["#text"] }}
+        />
 
-        {/* <TagsComparison /> */}
+        <TagsComparison />
         <Tour />
         <TracksMain />
         <Bio />
-      </View>;
+      </View>
+    );
   }
 
   loadingData() {
-    if (this.state.loading) {
-      return <Text>Loading...</Text>;
-    } else if (this.state.data) {
+    if (this.props.loadingArtistInfo) {
+      return <Loader />;
+    } else {
       return <View>{this.renderData()}</View>;
     }
   }
@@ -61,8 +58,9 @@ class ArtistInfoMain extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    similarArtistInfo: state.artist.similarArtistInfo,
-    imageUri: state.artist.imageUri
+    loadingArtistInfo: state.artist.loading.artistInfo,
+    imageUri: state.artist.imageUri,
+    similarArtistInfo: state.artist.similarArtistInfo
   };
 };
 

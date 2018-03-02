@@ -31,6 +31,7 @@ export const getSimilarArtist = userInput => dispatch => {
       dispatch(saveOriginalArtist(userInput));
       dispatch(getSimilarArtistSuccess(data.similarartists.artist));
       dispatch(getTagComparison(userInput))
+      dispatch(getTopTracks(userInput));
       Actions.similarArtists();
     })
 
@@ -39,6 +40,11 @@ export const getSimilarArtist = userInput => dispatch => {
       // dispatch(getHourlyForecastError(err));
     });
 };
+
+export const GET_ARTIST_INFO_REQUEST = "GET_ARTIST_INFO_REQUEST";
+export const getArtistInfoRequest = () => ({
+  type: GET_ARTIST_INFO_REQUEST,
+});
 
 export const GET_ARTIST_INFO_SUCCESS = "GET_ARTIST_INFO_SUCCESS";
 export const getArtistInfoSuccess = (artistInfo) => ({
@@ -99,6 +105,11 @@ export const getTagComparison = userInput => dispatch => {
     });
 };
 
+export const GET_TOP_TRACKS_REQUEST = "GET_TOP_TRACKS_REQUEST";
+export const getTopTracksRequest = () => ({
+  type: GET_TOP_TRACKS_SUCCESS,
+});
+
 export const GET_TOP_TRACKS_SUCCESS = "GET_TOP_TRACKS_SUCCESS";
 export const getTopTracksSuccess = data => ({
   type: GET_TOP_TRACKS_SUCCESS,
@@ -107,7 +118,7 @@ export const getTopTracksSuccess = data => ({
 
 
 export const getTopTracks = userInput => dispatch => {
-  // dispatch(getHourlyForecastRequest());
+  dispatch(getTopTracksRequest());
   fetch(
     `${API_BASE_URL}?method=artist.gettoptracks&artist=${userInput}&api_key=${API_KEY}&format=json`,
     {}
