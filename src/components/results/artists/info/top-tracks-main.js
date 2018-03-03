@@ -26,6 +26,7 @@ class TopTracksMain extends React.Component {
           renderItem={({ item }, index) => (
             <TopTracksRendered
               name={item.name}
+              artistName={this.props.artistName}
               playcount={Number(item.playcount)}
             />
           )}

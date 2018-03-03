@@ -19,7 +19,7 @@ class TopAlbumsRendered extends React.Component {
     return (
       <TouchableHighlight
         onPress={() => {
-          Actions.singleAlbum({ name: this.props.name });
+          Actions.singleAlbum({ route: this.props.name, artistName: this.props.artistName });
         }}
       >
         <View style={styles.trackContainer}>

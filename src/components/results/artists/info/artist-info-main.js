@@ -35,8 +35,8 @@ class ArtistInfoMain extends React.Component {
         />
         <TagsComparison />
         <Tour />
-        <TopAlbumsMain />
-        <TopTracksMain />
+        <TopAlbumsMain artistName={data.name}/>
+        <TopTracksMain artistName={data.name}/>
         <Bio />
       </ScrollView>
     );

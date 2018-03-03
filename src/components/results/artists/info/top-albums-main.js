@@ -23,7 +23,7 @@ class TopAlbumsMain extends React.Component {
           horizontal={true}
           data={topAlbums.slice(0, 4)}
           keyExtractor={(item, index) => index}
-          renderItem={({ item }, index) => <TopAlbumsRendered name={item.name} image={item.image}/>}
+          renderItem={({ item }, index) => <TopAlbumsRendered name={item.name} artistName={this.props.artistName} image={item.image}/>}
         />
       );
     }

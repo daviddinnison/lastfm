@@ -3,7 +3,10 @@ import React from "react";
 import { connect } from "react-redux";
 
 // react native
-import { StyleSheet, Text, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+
+// components
+import Loader from "../../../common/loader";
 
 // actions
 import { getAlbumInfo } from "../../../../actions/artist";
@@ -12,16 +15,58 @@ import { getAlbumInfo } from "../../../../actions/artist";
 import styles from "./styles/main";
 
 class SingleAlbumMain extends React.Component {
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.dispatch(getAlbumInfo(this.props.route, this.props.artistName));
+  }
 
-  renderAlbum() {
+  renderAlbumTags() {
+    const tagData = this.props.album.tags.tag.map((item, index) => (
+      <View key={index}>
+        <Text>{item.name}</Text>
+      </View>
+    ));
     return (
       <View>
-        <Text>You are in the SINGLE ALBUM component......</Text>
-        <Text>{this.props.test}</Text>
-        <Text>{this.props.name}</Text>
+        <Text style={styles.subheader}>Tags</Text>
+        {tagData}
       </View>
     );
+  }
+
+  renderAlbumTracks() {
+    console.log(this.props.album.tracks.track);
+    const trackData = this.props.album.tracks.track.map((item, index) => (
+      <View key={index}>
+        <Text>{item.name}</Text>
+        {/* <Text>length: {item.duration}</Text> */}
+      </View>
+    ));
+    return (
+      <View>
+        <Text style={styles.subheader}>Tracks</Text>
+        {trackData}
+      </View>
+    );
+  }
+
+  renderAlbum() {
+    if (this.props.loading) {
+      return <Loader />;
+    } else {
+      console.log("ALBUM DATA IN COMPONENT!!!!", this.props.album);
+      const data = this.props.album;
+      return (
+        <ScrollView style={styles.mainSection}>
+          <Text style={styles.header}>{this.props.route}</Text>
+          <Image
+            style={{ width: 162, height: 162 }}
+            source={{ uri: data.image[2]["#text"] }}
+          />
+          {this.renderAlbumTags()}
+          {this.renderAlbumTracks()}
+        </ScrollView>
+      );
+    }
   }
 
   render() {
@@ -31,7 +76,8 @@ class SingleAlbumMain extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    test: "test string!"
+    loading: state.artist.loading.singleAlbum,
+    album: state.artist.singleAlbum
   };
 };
 

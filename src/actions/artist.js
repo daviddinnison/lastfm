@@ -181,12 +181,10 @@ export const getAlbumInfoSuccess = data => ({
   data
 });
 
-export const getAlbumInfo = userInput => dispatch => {
+export const getAlbumInfo = (albumName, artistName) => dispatch => {
   dispatch(getAlbumInfoRequest());
-  fetch(
-    `${API_BASE_URL}?method=album.getinfo&artist=${userInput}&api_key=${API_KEY}&format=json`,
-    {}
-  )
+  const url = `${API_BASE_URL}?method=album.getinfo&api_key=${API_KEY}&artist=${artistName}&album=${albumName}&format=json`;
+  fetch(url, {})
     .then(res => {
       if (!res.ok) {
         console.log("bad response");
@@ -195,8 +193,7 @@ export const getAlbumInfo = userInput => dispatch => {
       return res.json();
     })
     .then(data => {
-      console.log("DATA INSIDE GETALBUMINFO success action", data);
-      // dispatch(getAlbumInfoSuccess(data.topalbums.album));
+      dispatch(getAlbumInfoSuccess(data.album));
     })
 
     .catch(err => {

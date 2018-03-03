@@ -7,12 +7,14 @@ import {
   GET_TOP_TRACKS_REQUEST,
   GET_TOP_TRACKS_SUCCESS,
   GET_TOP_ALBUMS_REQUEST,
-  GET_TOP_ALBUMS_SUCCESS
+  GET_TOP_ALBUMS_SUCCESS,
+  GET_ALBUM_INFO_REQUEST,
+  GET_ALBUM_INFO_SUCCESS
 } from "../actions/artist";
 
 const initialState = {
   baseComparisonTags: [],
-  loading: { artistInfo: true, topAblums: true, topTracks: true },
+  loading: { artistInfo: true, singleAlbum: true, topAblums: true, topTracks: true },
   orginalArtist: "",
   similarArtists: [],
   similarArtistInfo: {
@@ -22,7 +24,11 @@ const initialState = {
     image: [["#text"]]
   },
   similarArtistTopAlbums: [],
-  similarArtistTopTracks: [{ name: "" }]
+  similarArtistTopTracks: [{ name: "" }],
+  singleAlbum: {
+    tags: [],
+    tracks: []
+  }
 };
 
 export default function reducer(state = initialState, action) {
@@ -41,7 +47,7 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         loading: {
           ...state.loading,
-          artistInfo: true,
+          artistInfo: true
         }
       });
     }
@@ -88,6 +94,23 @@ export default function reducer(state = initialState, action) {
         loading: {
           ...state.loading,
           topAlbums: false
+        }
+      });
+    }
+    case "GET_ALBUM_INFO_REQUEST": {
+      return Object.assign({}, state, {
+        loading: {
+          ...state.loading,
+          singleAlbum: true
+        }
+      });
+    }
+    case "GET_ALBUM_INFO_SUCCESS": {
+      return Object.assign({}, state, {
+        singleAlbum: action.data,
+        loading: {
+          ...state.loading,
+          singleAlbum: false
         }
       });
     }
