@@ -2,17 +2,35 @@
 import React from "react";
 
 // react native
-import { Image, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  View
+} from "react-native";
+import { Actions } from "react-native-router-flux";
 
 // styles
 import styles from "./styles/main";
 
 class TopAlbumsRendered extends React.Component {
   render() {
-    return <View style={styles.trackContainer}>
-        <Text>{this.props.name}</Text>
-        <Image style={{ width: 60, height: 60 }} source={{ uri: this.props.image[1]["#text"] }} />
-      </View>;
+    return (
+      <TouchableHighlight
+        onPress={() => {
+          Actions.singleAlbum({ name: this.props.name });
+        }}
+      >
+        <View style={styles.trackContainer}>
+          <Text>{this.props.name}</Text>
+          <Image
+            style={{ width: 60, height: 60 }}
+            source={{ uri: this.props.image[1]["#text"] }}
+          />
+        </View>
+      </TouchableHighlight>
+    );
   }
 }
 
