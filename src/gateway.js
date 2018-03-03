@@ -9,19 +9,22 @@ import { Router, Stack, Scene } from "react-native-router-flux";
 import Launch from "./components/launch";
 import ArtistResultsMain from "./components/results/artists/artist-results-main";
 import ArtistInfoMain from "./components/results/artists/info/artist-info-main";
+import OriginalArtistInfo from "./components/results/artists/original-artist-main";
 import SingleAlbumMain from "./components/results/artists/info/single-album-main";
-
 
 class Gateway extends Component {
   render() {
-    return <Router>
+    return (
+      <Router>
         <Stack key="root">
           <Scene key="launch" component={Launch} />
           <Scene key="similarArtists" component={ArtistResultsMain} />
           <Scene key="artistInfo" component={ArtistInfoMain} />
           <Scene key="singleAlbum" component={SingleAlbumMain} />
+          <Scene key="originalArtistInfo" component={OriginalArtistInfo} />
         </Stack>
-      </Router>;
+      </Router>
+    );
   }
 }
 

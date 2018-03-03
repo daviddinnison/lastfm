@@ -3,13 +3,20 @@ import React from "react";
 import { connect } from "react-redux";
 
 // react native
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, ScrollView, StyleSheet, Text, View } from "react-native";
 
 // components
+import OriginalArtistMain from "./original-artist-main";
 import SimilarArtistResult from "./similar-artist-result";
 
 class ArtistResultsMain extends React.Component {
-  renderResults() {
+  renderOriginalArtist() {
+    
+      return (<OriginalArtistMain />);
+    
+  }
+
+  renderSimilarArtists() {
     return (
       <FlatList
         data={this.props.similarArtists}
@@ -26,12 +33,19 @@ class ArtistResultsMain extends React.Component {
   }
 
   render() {
-    return <View>{this.renderResults()}</View>;
+    return (
+      <ScrollView>
+        {this.renderOriginalArtist()}
+        {this.renderSimilarArtists()}
+      </ScrollView>
+    );
   }
 }
 
 const mapStateToProps = state => {
   return {
+    originalArtist: "My Bloody Valentine",
+    // originalArtist: state.artist.originalArist,
     similarArtists: state.artist.similarArtists
   };
 };
