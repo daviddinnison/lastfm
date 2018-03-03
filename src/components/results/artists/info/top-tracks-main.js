@@ -7,12 +7,12 @@ import { FlatList, StyleSheet, Text, View } from "react-native";
 
 // compopnents
 import Loader from "../../../common/loader";
-import TracksRendered from "./tracks-rendered";
+import TopTracksRendered from "./top-tracks-rendered";
 
 // styles
 import styles from "./styles/main";
 
-class TracksMain extends React.Component {
+class TopTracksMain extends React.Component {
   renderTracks() {
     if (this.props.loadingTopTracks) {
       return <Loader />;
@@ -24,7 +24,7 @@ class TracksMain extends React.Component {
           data={topTenTracks.slice(0, 9)}
           keyExtractor={(item, index) => index}
           renderItem={({ item }, index) => (
-            <TracksRendered
+            <TopTracksRendered
               name={item.name}
               playcount={Number(item.playcount)}
             />
@@ -51,4 +51,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(TracksMain);
+export default connect(mapStateToProps)(TopTracksMain);

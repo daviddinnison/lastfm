@@ -170,3 +170,37 @@ export const getTopAlbums = userInput => dispatch => {
       // dispatch(getHourlyForecastError(err));
     });
 };
+
+//SINGLE ALBUM
+export const GET_ALBUM_INFO_REQUEST = "GET_ALBUM_INFO_REQUEST";
+export const getAlbumInfoRequest = () => ({ type: GET_TOP_ALBUMS_REQUEST });
+
+export const GET_ALBUM_INFO_SUCCESS = "GET_ALBUM_INFO_SUCCESS";
+export const getAlbumInfoSuccess = data => ({
+  type: GET_ALBUM_INFO_SUCCESS,
+  data
+});
+
+export const getAlbumInfo = userInput => dispatch => {
+  dispatch(getAlbumInfoRequest());
+  fetch(
+    `${API_BASE_URL}?method=album.getinfo&artist=${userInput}&api_key=${API_KEY}&format=json`,
+    {}
+  )
+    .then(res => {
+      if (!res.ok) {
+        console.log("bad response");
+        throw new Error(res.statusText);
+      }
+      return res.json();
+    })
+    .then(data => {
+      console.log("DATA INSIDE GETALBUMINFO success action", data);
+      // dispatch(getAlbumInfoSuccess(data.topalbums.album));
+    })
+
+    .catch(err => {
+      console.log("ended up in a error catch", err);
+      // dispatch(getHourlyForecastError(err));
+    });
+};

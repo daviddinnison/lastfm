@@ -6,13 +6,13 @@ import { connect } from "react-redux";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 
 // compopnents
-import AlbumsRendered from "./albums-rendered";
+import TopAlbumsRendered from "./top-albums-rendered";
 import Loader from "../../../common/loader";
 
 // styles
 import styles from "./styles/main";
 
-class AlbumsMain extends React.Component {
+class TopAlbumsMain extends React.Component {
   renderAlbums() {
     if (this.props.loadingAlbumInfo) {
       return <Loader />;
@@ -23,7 +23,7 @@ class AlbumsMain extends React.Component {
           horizontal={true}
           data={topAlbums.slice(0, 4)}
           keyExtractor={(item, index) => index}
-          renderItem={({ item }, index) => <AlbumsRendered name={item.name} image={item.image}/>}
+          renderItem={({ item }, index) => <TopAlbumsRendered name={item.name} image={item.image}/>}
         />
       );
     }
@@ -47,4 +47,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(AlbumsMain);
+export default connect(mapStateToProps)(TopAlbumsMain);

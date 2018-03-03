@@ -6,12 +6,12 @@ import { connect } from "react-redux";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 
 //components
-import AlbumsMain from "./albums-main";
 import Bio from "./bio";
-import TagsComparison from "./tags-comparison";
-import Tour from "./tour";
-import TracksMain from "./tracks-main";
 import Loader from "../../../common/loader";
+import TagsComparison from "./tags-comparison";
+import TopAlbumsMain from "./top-albums-main";
+import TopTracksMain from "./top-tracks-main";
+import Tour from "./tour";
 
 //styles
 import styles from "./styles/main";
@@ -35,8 +35,8 @@ class ArtistInfoMain extends React.Component {
         />
         <TagsComparison />
         <Tour />
-        <AlbumsMain />
-        <TracksMain />
+        <TopAlbumsMain />
+        <TopTracksMain />
         <Bio />
       </ScrollView>
     );

@@ -7,7 +7,7 @@ import { StyleSheet, Text, View } from "react-native";
 // styles
 import styles from "./styles/main";
 
-class TracksRendered extends React.Component {
+class TopTracksRendered extends React.Component {
   render() {
     
     return <View style={styles.trackContainer}>
@@ -17,4 +17,4 @@ class TracksRendered extends React.Component {
   }
 }
 
-export default TracksRendered;
+export default TopTracksRendered;

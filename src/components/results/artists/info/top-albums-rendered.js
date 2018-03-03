@@ -7,7 +7,7 @@ import { Image, StyleSheet, Text, View } from "react-native";
 // styles
 import styles from "./styles/main";
 
-class AlbumsRendered extends React.Component {
+class TopAlbumsRendered extends React.Component {
   render() {
     return <View style={styles.trackContainer}>
         <Text>{this.props.name}</Text>
@@ -16,4 +16,4 @@ class AlbumsRendered extends React.Component {
   }
 }
 
-export default AlbumsRendered;
+export default TopAlbumsRendered;
