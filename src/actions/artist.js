@@ -3,13 +3,13 @@ const API_KEY = "a6be694f222c3e5ee8f11ab1c626bd00";
 const API_BASE_URL = "http://ws.audioscrobbler.com/2.0/";
 
 export const GET_SIMILAR_ARTIST_SUCCESS = "GET_SIMILAR_ARTIST_SUCCESS";
-export const getSimilarArtistSuccess = (similarArtists) => ({
+export const getSimilarArtistSuccess = similarArtists => ({
   type: GET_SIMILAR_ARTIST_SUCCESS,
   similarArtists
 });
 
 export const SAVE_ORIGINAL_ARTIST = "SAVE_ORIGINAL_ARTIST";
-export const saveOriginalArtist = (originalArtist) => ({
+export const saveOriginalArtist = originalArtist => ({
   type: SAVE_ORIGINAL_ARTIST,
   originalArtist
 });
@@ -28,14 +28,11 @@ export const getSimilarArtist = userInput => dispatch => {
       return res.json();
     })
     .then(data => {
-      console.log(data, "DATA being passed in")
-      console.log("USER INPUT that is being passed in ", userInput)
-      console.log("WHAT SHOULD be the similar artist being passed in", data.similarartists.artist)
       dispatch(saveOriginalArtist(userInput));
       dispatch(getSimilarArtistSuccess(data.similarartists.artist));
-      dispatch(getTagComparison(userInput))
-      dispatch(getTopTracks(userInput));
-      dispatch(getTopAlbums(userInput));
+      dispatch(getTagComparison(userInput));
+      // dispatch(getTopTracks(userInput));
+      // dispatch(getTopAlbums(userInput));
       Actions.similarArtists();
     })
 
@@ -47,17 +44,17 @@ export const getSimilarArtist = userInput => dispatch => {
 
 export const GET_ARTIST_INFO_REQUEST = "GET_ARTIST_INFO_REQUEST";
 export const getArtistInfoRequest = () => ({
-  type: GET_ARTIST_INFO_REQUEST,
+  type: GET_ARTIST_INFO_REQUEST
 });
 
 export const GET_ARTIST_INFO_SUCCESS = "GET_ARTIST_INFO_SUCCESS";
-export const getArtistInfoSuccess = (artistInfo) => ({
+export const getArtistInfoSuccess = artistInfo => ({
   type: GET_ARTIST_INFO_SUCCESS,
   artistInfo
 });
 
 export const getArtistInfo = userInput => dispatch => {
-  // dispatch(getHourlyForecastRequest());
+  dispatch(getArtistInfoRequest());
   fetch(
     `${API_BASE_URL}?method=artist.getInfo&artist=${userInput}&api_key=${API_KEY}&format=json`,
     {}
@@ -71,14 +68,12 @@ export const getArtistInfo = userInput => dispatch => {
     })
     .then(data => {
       dispatch(getArtistInfoSuccess(data.artist));
-      // dispatch(getTagComparison(userInput));
-      // dispatch(getTopTracks(userInput));
-      // dispatch(getTopAlbums(userInput));
+      dispatch(getTopAlbums(userInput));
+      dispatch(getTopTracks(userInput));
     })
 
     .catch(err => {
       console.log("ended up in a error catch", err);
-      // dispatch(getHourlyForecastError(err));
     });
 };
 
@@ -88,9 +83,7 @@ export const getTagComparisonSuccess = data => ({
   data
 });
 
-
 export const getTagComparison = userInput => dispatch => {
-  // dispatch(getHourlyForecastRequest());
   fetch(
     `${API_BASE_URL}?method=artist.getinfo&artist=${userInput}&api_key=${API_KEY}&format=json`,
     {}
@@ -114,7 +107,7 @@ export const getTagComparison = userInput => dispatch => {
 
 export const GET_TOP_TRACKS_REQUEST = "GET_TOP_TRACKS_REQUEST";
 export const getTopTracksRequest = () => ({
-  type: GET_TOP_TRACKS_SUCCESS,
+  type: GET_TOP_TRACKS_REQUEST
 });
 
 export const GET_TOP_TRACKS_SUCCESS = "GET_TOP_TRACKS_SUCCESS";
@@ -122,7 +115,6 @@ export const getTopTracksSuccess = data => ({
   type: GET_TOP_TRACKS_SUCCESS,
   data
 });
-
 
 export const getTopTracks = userInput => dispatch => {
   dispatch(getTopTracksRequest());
@@ -148,9 +140,7 @@ export const getTopTracks = userInput => dispatch => {
 };
 
 export const GET_TOP_ALBUMS_REQUEST = "GET_TOP_ALBUMS_REQUEST";
-export const getTopAlbumsRequest = () => ({
-  type: GET_TOP_ALBUMS_SUCCESS,
-});
+export const getTopAlbumsRequest = () => ({ type: GET_TOP_ALBUMS_REQUEST });
 
 export const GET_TOP_ALBUMS_SUCCESS = "GET_TOP_ALBUMS_SUCCESS";
 export const getTopAlbumsSuccess = data => ({
@@ -158,10 +148,12 @@ export const getTopAlbumsSuccess = data => ({
   data
 });
 
-
 export const getTopAlbums = userInput => dispatch => {
   dispatch(getTopAlbumsRequest());
-  fetch(`${API_BASE_URL}?method=artist.gettopalbums&artist=${userInput}&api_key=${API_KEY}&format=json`, {})
+  fetch(
+    `${API_BASE_URL}?method=artist.gettopalbums&artist=${userInput}&api_key=${API_KEY}&format=json`,
+    {}
+  )
     .then(res => {
       if (!res.ok) {
         console.log("bad response");

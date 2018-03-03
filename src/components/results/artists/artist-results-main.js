@@ -10,7 +10,6 @@ import SimilarArtistResult from "./similar-artist-result";
 
 class ArtistResultsMain extends React.Component {
   renderResults() {
-    console.log(this.props.similarArtists, "SIMILAR ARTIST DATA");
     return (
       <FlatList
         data={this.props.similarArtists}

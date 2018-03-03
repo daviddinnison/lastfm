@@ -41,7 +41,7 @@ export default function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         loading: {
           ...state.loading,
-          artistInfo: true
+          artistInfo: true,
         }
       });
     }

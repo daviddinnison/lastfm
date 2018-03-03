@@ -18,7 +18,6 @@ class AlbumsMain extends React.Component {
       return <Loader />;
     } else {
       let topAlbums = this.props.similarArtistTopAlbums;
-      console.log("TOP ALBUMS", this.props.similarArtistTopAlbums);
       return (
         <FlatList
           horizontal={true}
@@ -43,6 +42,7 @@ class AlbumsMain extends React.Component {
 const mapStateToProps = state => {
   return {
     loadingAlbumInfo: state.artist.loading.topAlbums,
+    // loadingAlbumInfo: true,
     similarArtistTopAlbums: state.artist.similarArtistTopAlbums
   };
 };
