@@ -14,7 +14,6 @@ import {
 
 // actions
 import { getSimilarArtist } from "../../actions/artist";
-import { getTag } from "../../actions/tag";
 
 class MainSearch extends React.Component {
   constructor(props, context) {

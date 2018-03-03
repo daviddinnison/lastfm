@@ -30,7 +30,7 @@ export const getSimilarArtist = userInput => dispatch => {
     .then(data => {
       console.log(data, "DATA being passed in")
       console.log("USER INPUT that is being passed in ", userInput)
-      console.log("WHAT SHOULD be the similar artist being passed in", data.similarArtists.artist)
+      console.log("WHAT SHOULD be the similar artist being passed in", data.similarartists.artist)
       dispatch(saveOriginalArtist(userInput));
       dispatch(getSimilarArtistSuccess(data.similarartists.artist));
       dispatch(getTagComparison(userInput))
@@ -71,6 +71,9 @@ export const getArtistInfo = userInput => dispatch => {
     })
     .then(data => {
       dispatch(getArtistInfoSuccess(data.artist));
+      // dispatch(getTagComparison(userInput));
+      // dispatch(getTopTracks(userInput));
+      // dispatch(getTopAlbums(userInput));
     })
 
     .catch(err => {
