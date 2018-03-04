@@ -1,16 +1,16 @@
 //react
 import React from "react";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 //react native
 import {
   Keyboard,
   StyleSheet,
-  Text,
   TextInput,
   TouchableHighlight,
   View
 } from "react-native";
+import { Button, Icon, Input, Item, SearchBar, Text } from "native-base";
 
 // actions
 import { getSimilarArtist } from "../../actions/artist";
@@ -22,7 +22,7 @@ class MainSearch extends React.Component {
       userInput: "My Bloody Valentine"
     };
   }
-  
+
   makeSearch() {
     Keyboard.dismiss();
     this.props.dispatch(getSimilarArtist(this.state.userInput));
@@ -31,21 +31,29 @@ class MainSearch extends React.Component {
   render() {
     return (
       <View>
-        
-        <TextInput
-          onChangeText={input => this.setState({ userInput: input })}
-        />
-        <TouchableHighlight
+        <Item>
+          <Icon name="ios-search" />
+          <Input
+            placeholder="Search"
+            onChangeText={input =>
+              this.setState({
+                userInput: input
+              })
+            }
+          />
+        </Item>
+        <Button
+          full
+          primary
           onPress={() => {
             this.makeSearch();
           }}
         >
-          <Text>Find</Text>
-        </TouchableHighlight>
+          <Text> Primary </Text>
+        </Button>
       </View>
     );
   }
 }
-
 
 export default connect()(MainSearch);

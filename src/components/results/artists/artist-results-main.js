@@ -35,7 +35,7 @@ class ArtistResultsMain extends React.Component {
   render() {
     return (
       <ScrollView>
-        {this.renderOriginalArtist()}
+        {/* {this.renderOriginalArtist()} */}
         {this.renderSimilarArtists()}
       </ScrollView>
     );
