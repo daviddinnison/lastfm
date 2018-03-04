@@ -3,7 +3,9 @@ import React from "react";
 import { connect } from "react-redux";
 
 //react native
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Image } from "react-native";
+import { Card, CardItem, Container, Text } from "native-base";
+
 
 //components
 import Bio from "./bio";
@@ -27,7 +29,7 @@ class ArtistInfoMain extends React.Component {
   renderData() {
     const data = this.props.similarArtistInfo;
     return (
-      <ScrollView style={styles.mainSection}>
+      <Card style={styles.mainSection}>
         <Text style={styles.header}>{data.name}</Text>
         <Image
           style={{ width: 162, height: 162 }}
@@ -38,7 +40,7 @@ class ArtistInfoMain extends React.Component {
         <TopAlbumsMain artistName={data.name}/>
         <TopTracksMain artistName={data.name}/>
         <Bio />
-      </ScrollView>
+      </Card>
     );
   }
 
@@ -46,12 +48,12 @@ class ArtistInfoMain extends React.Component {
     if (this.props.loadingArtistInfo) {
       return <Loader />;
     } else {
-      return <View>{this.renderData()}</View>;
+      return <Container>{this.renderData()}</Container>;
     }
   }
 
   render() {
-    return <View style={styles.container}>{this.loadingData()}</View>;
+    return <Container style={styles.container}>{this.loadingData()}</Container>;
   }
 }
 

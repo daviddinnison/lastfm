@@ -16,15 +16,16 @@ class ArtistResultsMain extends React.Component {
   }
 
   renderSimilarArtists() {
+    console.log("input data", this.props.similarArtists);
     return (
       <FlatList
-        data={this.props.similarArtists}
+        data={this.props.similarArtists.slice(0, 5)}
         keyExtractor={(item, index) => index}
         renderItem={({ item }) => (
           <SimilarArtistResult
             name={item.name}
             match={item.match}
-            image={item.image}
+            image={item.image[2]["#text"]}
           />
         )}
       />
@@ -34,10 +35,7 @@ class ArtistResultsMain extends React.Component {
   render() {
     return (
       <Container>
-        <Content>
-
-        {this.renderSimilarArtists()}
-        </Content>
+        <Content>{this.renderSimilarArtists()}</Content>
       </Container>
     );
   }

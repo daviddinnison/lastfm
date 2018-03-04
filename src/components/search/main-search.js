@@ -25,7 +25,7 @@ class MainSearch extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      userInput: "My Bloody Valentine"
+      userInput: "18 Carat Affair"
     };
   }
 
