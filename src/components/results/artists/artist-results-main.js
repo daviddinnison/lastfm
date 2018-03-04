@@ -10,6 +10,9 @@ import { Container, Content } from "native-base";
 import OriginalArtistMain from "./original-artist-main";
 import SimilarArtistResult from "./similar-artist-result";
 
+// styles
+import styles from "./styles/main";
+
 class ArtistResultsMain extends React.Component {
   renderOriginalArtist() {
     return <OriginalArtistMain />;

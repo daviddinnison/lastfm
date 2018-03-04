@@ -16,18 +16,18 @@ import {
 } from "native-base";
 
 // components
-import Loader from "../common/loader";
+import Loader from "./common/loader";
 
 // actions
-import { getSimilarArtist } from "../../actions/artist";
+import { getSimilarArtist } from "./../actions/artist";
+
+// style
+import styles from "./styles/main";
 
 class MainSearch extends React.Component {
-  constructor(props, context) {
-    super(props, context);
-    this.state = {
+  state = {
       userInput: "18 Carat Affair"
     };
-  }
 
   makeSearch() {
     Keyboard.dismiss();
@@ -46,7 +46,7 @@ class MainSearch extends React.Component {
     return (
       <Container>
         <Content>
-          <Item>
+          <Item style={styles.input}>
             <Icon name="ios-search" />
             <Input
               placeholder="Artist name"
@@ -55,15 +55,15 @@ class MainSearch extends React.Component {
                   userInput: input
                 })
               }
-            />
+              />
           </Item>
           <Button
             full
-            primary
+            style={styles.button}
             onPress={() => {
               this.makeSearch();
             }}
-          >
+            >
             {this.renderButtonText()}
           </Button>
         </Content>

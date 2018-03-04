@@ -27,7 +27,7 @@ class SingleAlbumMain extends React.Component {
     ));
     return (
       <View>
-        <Text style={styles.subheader}>Tags</Text>
+        <Text style={styles.subHeader}>Tags</Text>
         {tagData}
       </View>
     );
@@ -43,7 +43,7 @@ class SingleAlbumMain extends React.Component {
     ));
     return (
       <View>
-        <Text style={styles.subheader}>Tracks</Text>
+        <Text style={styles.subHeader}>Tracks</Text>
         {trackData}
       </View>
     );

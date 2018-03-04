@@ -32,7 +32,7 @@ class TopAlbumsMain extends React.Component {
   render() {
     return (
       <View>
-        <Text style={styles.subheader}>Top Artist Albums</Text>
+        <Text style={styles.subHeader}>Top Artist Albums</Text>
         {this.renderAlbums()}
       </View>
     );

@@ -38,7 +38,7 @@ class TopTracksMain extends React.Component {
   render() {
     return (
       <View>
-        <Text style={styles.subheader}>Top Artist Tracks</Text>
+        <Text style={styles.subHeader}>Top Artist Tracks</Text>
         {this.renderTracks()}
       </View>
     );

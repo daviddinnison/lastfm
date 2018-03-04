@@ -59,7 +59,7 @@ class TagsComparison extends React.Component {
   render() {
     return (
       <View>
-        <Text style={styles.subheader}>
+        <Text style={styles.subHeader}>
           Common tags with {this.props.originalArtist}
         </Text>
         {this.renderComparison()}

@@ -14,7 +14,7 @@ import TopTracksMain from "./info/top-tracks-main";
 import Tour from "./info/tour";
 
 //styles
-import styles from "./info/styles/main";
+// import styles from "./info/styles/main";
 
 //actions
 import { getArtistInfo } from "../../../actions/artist";

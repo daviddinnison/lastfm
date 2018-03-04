@@ -6,9 +6,11 @@ export const dimensions = {
 };
 
 export const colors = {
-  primary: "#226B74",
-  secondary: "#254B5A",
-  tertiary: "#5DA6A7",
+  primary: "#155263", // dark blue
+  secondary: "#76B39D", //teal
+  tertiary: "#F0B917", // yellow
+  white: "#FFFFFF",
+  offWhite: "#F9F8EB",
   affirmative: "#008000",
   negative: "#800000"
 };
@@ -45,15 +47,17 @@ const baseStyles = {
   },
   header: {
     backgroundColor: "transparent",
+    fontFamily: fonts.primary,
     fontSize: fonts.xl,
-    fontFamily: fonts.primary,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    textAlign: "center"
   },
-  subheader: {
+  subHeader: {
     backgroundColor: "transparent",
-    fontSize: fonts.md,
     fontFamily: fonts.primary,
-    fontWeight: "bold"
+    fontSize: fonts.md,
+    fontWeight: "bold",
+    textAlign: "center"
   },
   mainSection: {
     paddingVertical: padding.xs,
