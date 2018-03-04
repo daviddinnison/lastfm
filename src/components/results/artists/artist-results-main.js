@@ -3,7 +3,8 @@ import React from "react";
 import { connect } from "react-redux";
 
 // react native
-import { FlatList, ScrollView, StyleSheet, Text, View } from "react-native";
+import { FlatList } from "react-native";
+import { Container, Content } from "native-base";
 
 // components
 import OriginalArtistMain from "./original-artist-main";
@@ -11,9 +12,7 @@ import SimilarArtistResult from "./similar-artist-result";
 
 class ArtistResultsMain extends React.Component {
   renderOriginalArtist() {
-    
-      return (<OriginalArtistMain />);
-    
+    return <OriginalArtistMain />;
   }
 
   renderSimilarArtists() {
@@ -34,17 +33,19 @@ class ArtistResultsMain extends React.Component {
 
   render() {
     return (
-      <ScrollView>
-        {/* {this.renderOriginalArtist()} */}
+      <Container>
+        <Content>
+
         {this.renderSimilarArtists()}
-      </ScrollView>
+        </Content>
+      </Container>
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    originalArtist: "My Bloody Valentine",
+    // originalArtist: "My Bloody Valentine",
     // originalArtist: state.artist.originalArist,
     similarArtists: state.artist.similarArtists
   };

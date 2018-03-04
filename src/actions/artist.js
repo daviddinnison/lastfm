@@ -2,6 +2,12 @@ import { Actions } from "react-native-router-flux";
 const API_KEY = "a6be694f222c3e5ee8f11ab1c626bd00";
 const API_BASE_URL = "http://ws.audioscrobbler.com/2.0/";
 
+export const GET_SIMILAR_ARTIST_REQUEST = "GET_SIMILAR_ARTIST_REQUEST";
+export const getSimilarArtistRequest = () => ({
+  type: GET_SIMILAR_ARTIST_REQUEST,
+});
+
+
 export const GET_SIMILAR_ARTIST_SUCCESS = "GET_SIMILAR_ARTIST_SUCCESS";
 export const getSimilarArtistSuccess = similarArtists => ({
   type: GET_SIMILAR_ARTIST_SUCCESS,
@@ -15,7 +21,8 @@ export const saveOriginalArtist = originalArtist => ({
 });
 
 export const getSimilarArtist = userInput => dispatch => {
-  // dispatch(getHourlyForecastRequest());
+  dispatch(getSimilarArtistRequest());
+  console.log("similar ARTIST fetch is starting....", userInput);
   fetch(
     `${API_BASE_URL}?method=artist.getsimilar&artist=${userInput}&api_key=${API_KEY}&format=json`,
     {}
@@ -28,6 +35,7 @@ export const getSimilarArtist = userInput => dispatch => {
       return res.json();
     })
     .then(data => {
+      console.log("SIMILAR ARTIST DATA FETCH worked", data)
       dispatch(saveOriginalArtist(userInput));
       dispatch(getSimilarArtistSuccess(data.similarartists.artist));
       dispatch(getTagComparison(userInput));

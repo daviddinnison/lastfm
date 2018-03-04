@@ -1,4 +1,5 @@
 import {
+  GET_SIMILAR_ARTIST_REQUEST,
   GET_SIMILAR_ARTIST_SUCCESS,
   SAVE_ORIGINAL_ARTIST,
   GET_ARTIST_INFO_REQUEST,
@@ -14,7 +15,7 @@ import {
 
 const initialState = {
   baseComparisonTags: [],
-  loading: { artistInfo: true, singleAlbum: true, topAblums: true, topTracks: true },
+  loading: { artistInfo: true, initialSearch: false, singleAlbum: true, topAblums: true, topTracks: true },
   orginalArtist: "",
   similarArtists: [],
   similarArtistInfo: {
@@ -33,9 +34,21 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
+    case "GET_SIMILAR_ARTIST_REQUEST": {
+      return Object.assign({}, state, {
+        loading: {
+          ...state.loading,
+          initialSearch: true
+        }
+      });
+    }
     case "GET_SIMILAR_ARTIST_SUCCESS": {
       return Object.assign({}, state, {
-        similarArtists: action.similarArtists
+        similarArtists: action.similarArtists,
+        loading: {
+          ...state.loading,
+          initialSearch: false
+        }
       });
     }
     case "SAVE_ORIGINAL_ARTIST": {

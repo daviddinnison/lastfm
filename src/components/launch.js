@@ -2,8 +2,8 @@
 import React from "react";
 
 // react native
-import { StyleSheet, Text, View } from "react-native";
 import { Actions } from "react-native-router-flux";
+import { Container, Text } from "native-base";
 
 // components
 import MainSearch from "./search/main-search";
@@ -14,10 +14,11 @@ import styles from "./styles/main";
 class Launch extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Welcome!!!!</Text>
+      <Container style={styles.container}>
+        <Text style={styles.header}>TuneCatch</Text>
+        <Text style={styles.subheader}>There's always more fish in the sea...</Text>
         <MainSearch />
-      </View>
+      </Container>
     );
   }
 }
