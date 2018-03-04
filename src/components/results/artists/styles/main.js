@@ -1,4 +1,9 @@
-import createStyles, { colors, dimensions, fonts, padding } from "../../../baseStyles";
+import createStyles, {
+  colors,
+  dimensions,
+  fonts,
+  padding
+} from "../../../baseStyles";
 
 export default (singleArtistInfo = createStyles({
   image: {
@@ -15,7 +20,15 @@ export default (singleArtistInfo = createStyles({
     padding: padding.sm
   },
   resultInfo: {
+    backgroundColor: "red",
     alignSelf: "center",
-    flex: 3
+    flex: 3,
+    height: undefined,
+    width: undefined
+  },
+  resultName: {
+    fontFamily: fonts.primary,
+    fontSize: fonts.lg,
+    fontWeight: "bold"
   }
 }));
