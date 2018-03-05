@@ -11,21 +11,27 @@ import {
   GET_TOP_ALBUMS_SUCCESS,
   GET_ALBUM_INFO_REQUEST,
   GET_ALBUM_INFO_SUCCESS
-} from "../actions/artist";
+} from '../actions/artist';
 
 const initialState = {
   baseComparisonTags: [],
-  loading: { artistInfo: true, initialSearch: false, singleAlbum: true, topAblums: true, topTracks: true },
-  orginalArtist: "",
+  loading: {
+    artistInfo: true,
+    initialSearch: false,
+    singleAlbum: true,
+    topAblums: true,
+    topTracks: true
+  },
+  orginalArtist: '',
   similarArtists: [],
   similarArtistInfo: {
     bio: {},
-    tags: { tag: [{ name: "" }] },
-    name: "",
-    image: [["#text"]]
+    tags: { tag: [{ name: '' }] },
+    name: '',
+    image: [['#text']]
   },
   similarArtistTopAlbums: [],
-  similarArtistTopTracks: [{ name: "" }],
+  similarArtistTopTracks: [{ name: '' }],
   singleAlbum: {
     tags: [],
     tracks: []
@@ -34,7 +40,7 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case "GET_SIMILAR_ARTIST_REQUEST": {
+    case 'GET_SIMILAR_ARTIST_REQUEST': {
       return Object.assign({}, state, {
         loading: {
           ...state.loading,
@@ -42,7 +48,7 @@ export default function reducer(state = initialState, action) {
         }
       });
     }
-    case "GET_SIMILAR_ARTIST_SUCCESS": {
+    case 'GET_SIMILAR_ARTIST_SUCCESS': {
       return Object.assign({}, state, {
         similarArtists: action.similarArtists,
         loading: {
@@ -51,12 +57,12 @@ export default function reducer(state = initialState, action) {
         }
       });
     }
-    case "SAVE_ORIGINAL_ARTIST": {
+    case 'SAVE_ORIGINAL_ARTIST': {
       return Object.assign({}, state, {
         originalArtist: action.originalArtist
       });
     }
-    case "GET_ARTIST_INFO_REQUEST": {
+    case 'GET_ARTIST_INFO_REQUEST': {
       return Object.assign({}, state, {
         loading: {
           ...state.loading,
@@ -64,7 +70,7 @@ export default function reducer(state = initialState, action) {
         }
       });
     }
-    case "GET_ARTIST_INFO_SUCCESS": {
+    case 'GET_ARTIST_INFO_SUCCESS': {
       return Object.assign({}, state, {
         similarArtistInfo: action.artistInfo,
         loading: {
@@ -73,10 +79,10 @@ export default function reducer(state = initialState, action) {
         }
       });
     }
-    case "GET_TAG_COMPARISON_SUCCESS": {
+    case 'GET_TAG_COMPARISON_SUCCESS': {
       return Object.assign({}, state, { baseComparisonTags: action.data });
     }
-    case "GET_TOP_TRACKS_REQUEST": {
+    case 'GET_TOP_TRACKS_REQUEST': {
       return Object.assign({}, state, {
         loading: {
           ...state.loading,
@@ -84,7 +90,7 @@ export default function reducer(state = initialState, action) {
         }
       });
     }
-    case "GET_TOP_TRACKS_SUCCESS": {
+    case 'GET_TOP_TRACKS_SUCCESS': {
       return Object.assign({}, state, {
         similarArtistTopTracks: action.data,
         loading: {
@@ -93,7 +99,7 @@ export default function reducer(state = initialState, action) {
         }
       });
     }
-    case "GET_TOP_ALBUMS_REQUEST": {
+    case 'GET_TOP_ALBUMS_REQUEST': {
       return Object.assign({}, state, {
         loading: {
           ...state.loading,
@@ -101,7 +107,7 @@ export default function reducer(state = initialState, action) {
         }
       });
     }
-    case "GET_TOP_ALBUMS_SUCCESS": {
+    case 'GET_TOP_ALBUMS_SUCCESS': {
       return Object.assign({}, state, {
         similarArtistTopAlbums: action.data,
         loading: {
@@ -110,7 +116,7 @@ export default function reducer(state = initialState, action) {
         }
       });
     }
-    case "GET_ALBUM_INFO_REQUEST": {
+    case 'GET_ALBUM_INFO_REQUEST': {
       return Object.assign({}, state, {
         loading: {
           ...state.loading,
@@ -118,7 +124,7 @@ export default function reducer(state = initialState, action) {
         }
       });
     }
-    case "GET_ALBUM_INFO_SUCCESS": {
+    case 'GET_ALBUM_INFO_SUCCESS': {
       return Object.assign({}, state, {
         singleAlbum: action.data,
         loading: {

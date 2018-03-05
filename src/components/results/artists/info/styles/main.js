@@ -3,7 +3,7 @@ import createStyles, {
   fonts,
   margin,
   padding
-} from "../../../../baseStyles";
+} from '../../../../baseStyles';
 export default (singleArtistInfo = createStyles({
   // header
   artistName: {
@@ -11,7 +11,7 @@ export default (singleArtistInfo = createStyles({
     color: colors.secondary,
     fontFamily: fonts.primary,
     fontSize: fonts.xl,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: margin.md,
     padding: padding.md
   },
@@ -40,11 +40,11 @@ export default (singleArtistInfo = createStyles({
     marginHorizontal: margin.sm
   },
   trackName: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     fontFamily: fonts.primary
   },
   trackPlays: {
-    fontStyle: "italic",
+    fontStyle: 'italic',
     fontFamily: fonts.primary
   }
 }));

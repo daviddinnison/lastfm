@@ -1,13 +1,13 @@
 //react
-import React from "react";
+import React from 'react';
 
 //react native
-import { Image } from "react-native";
-import { Actions } from "react-native-router-flux";
-import { Card, CardItem, Container, Text } from "native-base";
+import { Image } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import { Card, CardItem, Container, Text } from 'native-base';
 
 //styles
-import styles from "./styles/main";
+import styles from './styles/main';
 
 class SimilarArtistResult extends React.Component {
   render() {
@@ -16,7 +16,7 @@ class SimilarArtistResult extends React.Component {
         <Container style={styles.resultInfo}>
           <CardItem>
             <Text
-            style={styles.resultName}
+              style={styles.resultName}
               onPress={() => {
                 Actions.artistInfo({ route: this.props.name });
               }}

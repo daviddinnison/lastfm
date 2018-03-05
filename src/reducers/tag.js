@@ -1,14 +1,14 @@
-import { OTHER_ACTION } from "../actions/tag";
+import { OTHER_ACTION } from '../actions/tag';
 
 const initialState = {
-  other: "the other test begins"
+  other: 'the other test begins'
 };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case "OTHER_ACTION": {
+    case 'OTHER_ACTION': {
       return Object.assign({}, state, {
-        other: "THE OTHER TEST IS OVER"
+        other: 'THE OTHER TEST IS OVER'
       });
     }
     default:

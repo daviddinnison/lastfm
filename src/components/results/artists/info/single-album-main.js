@@ -1,18 +1,18 @@
 // react
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
 // react native
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 // components
-import Loader from "../../../common/loader";
+import Loader from '../../../common/loader';
 
 // actions
-import { getAlbumInfo } from "../../../../actions/artist";
+import { getAlbumInfo } from '../../../../actions/artist';
 
 // styles
-import styles from "./styles/main";
+import styles from './styles/main';
 
 class SingleAlbumMain extends React.Component {
   componentDidMount() {
@@ -53,14 +53,14 @@ class SingleAlbumMain extends React.Component {
     if (this.props.loading) {
       return <Loader />;
     } else {
-      console.log("ALBUM DATA IN COMPONENT!!!!", this.props.album);
+      console.log('ALBUM DATA IN COMPONENT!!!!', this.props.album);
       const data = this.props.album;
       return (
         <ScrollView style={styles.mainSection}>
           <Text style={styles.header}>{this.props.route}</Text>
           <Image
             style={{ width: 162, height: 162 }}
-            source={{ uri: data.image[2]["#text"] }}
+            source={{ uri: data.image[2]['#text'] }}
           />
           {this.renderAlbumTags()}
           {this.renderAlbumTracks()}

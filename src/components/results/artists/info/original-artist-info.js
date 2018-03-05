@@ -1,33 +1,33 @@
 //react
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
 //react native
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from 'react-native';
 
 //components
-import Bio from "./bio";
-import Loader from "../../../common/loader";
-import TopAlbumsMain from "./top-albums-main";
-import TopTracksMain from "./top-tracks-main";
-import Tour from "./tour";
+import Bio from './bio';
+import Loader from '../../../common/loader';
+import TopAlbumsMain from './top-albums-main';
+import TopTracksMain from './top-tracks-main';
+import Tour from './tour';
 
 //styles
-import styles from "./styles/main";
+import styles from './styles/main';
 
 //actions
-import { getArtistInfo } from "../../../../actions/artist";
+import { getArtistInfo } from '../../../../actions/artist';
 
 class OriginalArtistInfo extends React.Component {
   renderData() {
     const data = this.props.originalArtistInfo;
-    console.log("DATA", data)
+    console.log('DATA', data);
     return (
       <View style={styles.mainSection}>
         <Text style={styles.header}>{data.name}</Text>
         <Image
           style={{ width: 162, height: 162 }}
-          source={{ uri: this.props.originalArtistInfo.image[2]["#text"] }}
+          source={{ uri: this.props.originalArtistInfo.image[2]['#text'] }}
         />
         <Tour />
         <TopAlbumsMain artistName={data.name} />
@@ -41,7 +41,7 @@ class OriginalArtistInfo extends React.Component {
     if (this.props.loading) {
       return <Loader />;
     } else {
-    return (<View>{this.renderData()}</View>);
+      return <View>{this.renderData()}</View>;
     }
   }
 

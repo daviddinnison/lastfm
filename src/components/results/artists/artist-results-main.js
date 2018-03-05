@@ -1,17 +1,17 @@
 // react
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
 // react native
-import { FlatList } from "react-native";
-import { Container, Content } from "native-base";
+import { FlatList } from 'react-native';
+import { Container, Content } from 'native-base';
 
 // components
-import OriginalArtistMain from "./original-artist-main";
-import SimilarArtistResult from "./similar-artist-result";
+import OriginalArtistMain from './original-artist-main';
+import SimilarArtistResult from './similar-artist-result';
 
 // styles
-import styles from "./styles/main";
+import styles from './styles/main';
 
 class ArtistResultsMain extends React.Component {
   renderOriginalArtist() {
@@ -19,7 +19,7 @@ class ArtistResultsMain extends React.Component {
   }
 
   renderSimilarArtists() {
-    console.log("input data", this.props.similarArtists);
+    console.log('input data', this.props.similarArtists);
     return (
       <FlatList
         data={this.props.similarArtists.slice(0, 5)}
@@ -28,7 +28,7 @@ class ArtistResultsMain extends React.Component {
           <SimilarArtistResult
             name={item.name}
             match={item.match}
-            image={item.image[2]["#text"]}
+            image={item.image[2]['#text']}
           />
         )}
       />

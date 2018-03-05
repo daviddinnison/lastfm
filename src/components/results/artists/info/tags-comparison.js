@@ -1,15 +1,15 @@
 // react
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
 // react native
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from 'react-native';
 
 // compoents
-import Loader from "../../../common/loader";
+import Loader from '../../../common/loader';
 
 // styles
-import styles from "./styles/main";
+import styles from './styles/main';
 
 class TagsComparison extends React.Component {
   constructor(props) {

@@ -1,25 +1,24 @@
 //react
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
 //react native
-import { Image } from "react-native";
-import { Card, CardItem, Container, Content, Text } from "native-base";
-
+import { Image } from 'react-native';
+import { Card, CardItem, Container, Content, Text } from 'native-base';
 
 //components
-import Bio from "./bio";
-import Loader from "../../../common/loader";
-import TagsComparison from "./tags-comparison";
-import TopAlbumsMain from "./top-albums-main";
-import TopTracksMain from "./top-tracks-main";
-import Tour from "./tour";
+import Bio from './bio';
+import Loader from '../../../common/loader';
+import TagsComparison from './tags-comparison';
+import TopAlbumsMain from './top-albums-main';
+import TopTracksMain from './top-tracks-main';
+import Tour from './tour';
 
 //styles
-import styles from "./styles/main";
+import styles from './styles/main';
 
 //actions
-import { getArtistInfo } from "../../../../actions/artist";
+import { getArtistInfo } from '../../../../actions/artist';
 
 class ArtistInfoMain extends React.Component {
   componentDidMount() {
@@ -33,12 +32,12 @@ class ArtistInfoMain extends React.Component {
         <Text style={styles.artistName}>{data.name}</Text>
         <Image
           style={styles.albumImage}
-          source={{ uri: data.image[2]["#text"] }}
+          source={{ uri: data.image[2]['#text'] }}
         />
         <TagsComparison />
         <Tour />
-        <TopAlbumsMain artistName={data.name}/>
-        <TopTracksMain artistName={data.name}/>
+        <TopAlbumsMain artistName={data.name} />
+        <TopTracksMain artistName={data.name} />
         <Bio />
       </Content>
     );

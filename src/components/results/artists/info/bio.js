@@ -1,12 +1,12 @@
 //react
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
 //react native
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from 'react-native';
 
 // styles
-import styles from "./styles/main";
+import styles from './styles/main';
 
 class Bio extends React.Component {
   render() {

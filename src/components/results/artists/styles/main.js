@@ -3,25 +3,25 @@ import createStyles, {
   dimensions,
   fonts,
   padding
-} from "../../../baseStyles";
+} from '../../../baseStyles';
 
 export default (singleArtistInfo = createStyles({
   image: {
-    alignSelf: "stretch",
+    alignSelf: 'stretch',
     flex: 1,
     height: undefined,
     width: undefined
   },
   resultContainer: {
-    alignItems: "center",
-    flexDirection: "row",
-    flexWrap: "nowrap",
-    justifyContent: "center",
+    alignItems: 'center',
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+    justifyContent: 'center',
     padding: padding.sm
   },
   resultInfo: {
-    backgroundColor: "red",
-    alignSelf: "center",
+    backgroundColor: 'red',
+    alignSelf: 'center',
     flex: 3,
     height: undefined,
     width: undefined
@@ -29,6 +29,6 @@ export default (singleArtistInfo = createStyles({
   resultName: {
     fontFamily: fonts.primary,
     fontSize: fonts.lg,
-    fontWeight: "bold"
+    fontWeight: 'bold'
   }
 }));

@@ -1,16 +1,16 @@
 // react
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
 // react native
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 
 // compopnents
-import Loader from "../../../common/loader";
-import TopTracksRendered from "./top-tracks-rendered";
+import Loader from '../../../common/loader';
+import TopTracksRendered from './top-tracks-rendered';
 
 // styles
-import styles from "./styles/main";
+import styles from './styles/main';
 
 class TopTracksMain extends React.Component {
   renderTracks() {

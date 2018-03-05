@@ -1,8 +1,8 @@
 //react
-import React from "react";
+import React from 'react';
 
 //react native
-import { Spinner } from "native-base";
+import { Spinner } from 'native-base';
 
 export default class Loader extends React.Component {
   render() {

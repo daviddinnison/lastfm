@@ -1,16 +1,16 @@
 //react
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 //react-native
-import { StyleSheet, Text, View } from "react-native";
-import { Router, Stack, Scene } from "react-native-router-flux";
+import { StyleSheet, Text, View } from 'react-native';
+import { Router, Stack, Scene } from 'react-native-router-flux';
 
 //components
-import Launch from "./components/launch";
-import ArtistResultsMain from "./components/results/artists/artist-results-main";
-import ArtistInfoMain from "./components/results/artists/info/artist-info-main";
-import OriginalArtistInfo from "./components/results/artists/original-artist-main";
-import SingleAlbumMain from "./components/results/artists/info/single-album-main";
+import Launch from './components/launch';
+import ArtistResultsMain from './components/results/artists/artist-results-main';
+import ArtistInfoMain from './components/results/artists/info/artist-info-main';
+import OriginalArtistInfo from './components/results/artists/original-artist-main';
+import SingleAlbumMain from './components/results/artists/info/single-album-main';
 
 class Gateway extends Component {
   render() {

@@ -1,23 +1,23 @@
 //react
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
 //react native
-import { Image, StyleSheet, Text, View } from "react-native";
-import { Actions } from "react-native-router-flux";
+import { Image, StyleSheet, Text, View } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 //components
-import Bio from "./info/bio";
-import Loader from "../../common/loader";
-import TopAlbumsMain from "./info/top-albums-main";
-import TopTracksMain from "./info/top-tracks-main";
-import Tour from "./info/tour";
+import Bio from './info/bio';
+import Loader from '../../common/loader';
+import TopAlbumsMain from './info/top-albums-main';
+import TopTracksMain from './info/top-tracks-main';
+import Tour from './info/tour';
 
 //styles
 // import styles from "./info/styles/main";
 
 //actions
-import { getArtistInfo } from "../../../actions/artist";
+import { getArtistInfo } from '../../../actions/artist';
 
 class OriginalArtistMain extends React.Component {
   componentDidMount() {

@@ -1,16 +1,16 @@
 // react
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 
 // react native
-import { FlatList, StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 
 // compopnents
-import TopAlbumsRendered from "./top-albums-rendered";
-import Loader from "../../../common/loader";
+import TopAlbumsRendered from './top-albums-rendered';
+import Loader from '../../../common/loader';
 
 // styles
-import styles from "./styles/main";
+import styles from './styles/main';
 
 class TopAlbumsMain extends React.Component {
   renderAlbums() {
@@ -23,7 +23,13 @@ class TopAlbumsMain extends React.Component {
           horizontal={true}
           data={topAlbums.slice(0, 4)}
           keyExtractor={(item, index) => index}
-          renderItem={({ item }, index) => <TopAlbumsRendered name={item.name} artistName={this.props.artistName} image={item.image}/>}
+          renderItem={({ item }, index) => (
+            <TopAlbumsRendered
+              name={item.name}
+              artistName={this.props.artistName}
+              image={item.image}
+            />
+          )}
         />
       );
     }
