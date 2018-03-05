@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 //react native
 import { Image } from "react-native";
-import { Card, CardItem, Container, Text } from "native-base";
+import { Card, CardItem, Container, Content, Text } from "native-base";
 
 
 //components
@@ -29,18 +29,18 @@ class ArtistInfoMain extends React.Component {
   renderData() {
     const data = this.props.similarArtistInfo;
     return (
-      <Card style={styles.mainSection}>
-        <Text style={styles.header}>{data.name}</Text>
+      <Content>
+        <Text style={styles.artistName}>{data.name}</Text>
         <Image
-          style={{ width: 162, height: 162 }}
-          source={{ uri: this.props.similarArtistInfo.image[2]["#text"] }}
+          style={styles.albumImage}
+          source={{ uri: data.image[2]["#text"] }}
         />
         <TagsComparison />
         <Tour />
         <TopAlbumsMain artistName={data.name}/>
         <TopTracksMain artistName={data.name}/>
         <Bio />
-      </Card>
+      </Content>
     );
   }
 
