@@ -52,6 +52,12 @@ const baseStyles = {
     fontWeight: 'bold',
     textAlign: 'center'
   },
+  image: {
+    alignSelf: 'stretch',
+    flex: 1,
+    height: undefined,
+    width: undefined
+  },
   subHeader: {
     backgroundColor: 'transparent',
     fontFamily: fonts.primary,

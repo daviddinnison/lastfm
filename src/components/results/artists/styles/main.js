@@ -7,12 +7,6 @@ import createStyles, {
 } from '../../../baseStyles';
 
 export default (singleArtistInfo = createStyles({
-  image: {
-    alignSelf: 'stretch',
-    flex: 1,
-    height: undefined,
-    width: undefined
-  },
   originalArtistContainer: {
     backgroundColor: colors.primary,
     margin: margin.sm,
@@ -24,6 +18,20 @@ export default (singleArtistInfo = createStyles({
     fontSize: fonts.xl,
     fontWeight: 'bold',
     textAlign: 'center'
+  },
+  originalArtistTagContainer: {
+    alignItems: 'center',
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+    justifyContent: 'space-between',
+    padding: padding.sm
+  },
+  originalArtistTagText: {
+    backgroundColor: 'red',
+    alignSelf: 'center',
+    height: undefined,
+    width: undefined
   },
   resultContainer: {
     alignItems: 'center',

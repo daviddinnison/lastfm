@@ -54,3 +54,4 @@ buck-out/
 */fastlane/screenshots
 
 planning.md
+/src/components/test.js

@@ -1,7 +1,8 @@
 //react
 import React from 'react';
 import { connect } from 'react-redux';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
+import { Text } from 'native-base'; 
 
 // styles
 import styles from './styles/main';
@@ -9,21 +10,20 @@ import styles from './styles/main';
 class OriginalArtistMain extends React.Component {
   renderTags() {
     if (this.props.tags.length !== 0) {
-      console.log('array is true', this.props.tags);
       const tagData = this.props.tags.tag.map((item, index) => (
-        <Text>{item.name}</Text>
+        <View key={index} style={styles.originalArtistTagContainer}>
+          <Text style={styles.originalArtistTagText}>
+            {item.name}
+          </Text>
+        </View>
       ));
-      return(<View>{tagData}</View>)
+      return <View style={styles.resultContainer}>{tagData}</View>;
     } else {
       return;
     }
   }
 
   render() {
-    console.log(
-      '-----------------base comparison tags----------',
-      this.props.tags
-    );
     return (
       <View style={styles.originalArtistContainer}>
         <Text style={styles.originalArtistHeader}>
