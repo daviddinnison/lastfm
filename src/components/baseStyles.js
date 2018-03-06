@@ -1,18 +1,18 @@
-import { StyleSheet, Dimensions } from "react-native";
+import { StyleSheet, Dimensions } from 'react-native';
 
 export const dimensions = {
-  fullHeight: Dimensions.get("window").height,
-  fullWidth: Dimensions.get("window").width
+  fullHeight: Dimensions.get('window').height,
+  fullWidth: Dimensions.get('window').width
 };
 
 export const colors = {
-  primary: "#155263", // dark blue
-  secondary: "#76B39D", //teal
-  tertiary: "#F0B917", // yellow
-  white: "#FFFFFF",
-  offWhite: "#F9F8EB",
-  affirmative: "#008000",
-  negative: "#800000"
+  primary: '#155263', // dark blue
+  secondary: '#76B39D', //teal
+  tertiary: '#F0B917', // yellow
+  white: '#FFFFFF',
+  offWhite: '#F9F8EB',
+  affirmative: '#008000',
+  negative: '#800000'
 };
 
 export const padding = {
@@ -36,7 +36,7 @@ export const fonts = {
   md: 18,
   lg: 22,
   xl: 28,
-  primary: "Cochin"
+  primary: 'Cochin'
 };
 
 const baseStyles = {
@@ -46,18 +46,18 @@ const baseStyles = {
     width: dimensions.fullWidth
   },
   header: {
-    backgroundColor: "transparent",
+    backgroundColor: 'transparent',
     fontFamily: fonts.primary,
     fontSize: fonts.xl,
-    fontWeight: "bold",
-    textAlign: "center"
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
   subHeader: {
-    backgroundColor: "transparent",
+    backgroundColor: 'transparent',
     fontFamily: fonts.primary,
     fontSize: fonts.md,
-    fontWeight: "bold",
-    textAlign: "center"
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
   mainSection: {
     paddingVertical: padding.xs,

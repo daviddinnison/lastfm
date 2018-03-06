@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 // react native
 import { FlatList } from 'react-native';
-import { Container, Content } from 'native-base';
+import { Content } from 'native-base';
 
 // components
 import OriginalArtistMain from './original-artist-main';
@@ -14,10 +14,6 @@ import SimilarArtistResult from './similar-artist-result';
 import styles from './styles/main';
 
 class ArtistResultsMain extends React.Component {
-  renderOriginalArtist() {
-    return <OriginalArtistMain />;
-  }
-
   renderSimilarArtists() {
     console.log('input data', this.props.similarArtists);
     return (
@@ -37,17 +33,16 @@ class ArtistResultsMain extends React.Component {
 
   render() {
     return (
-      <Container>
-        <Content>{this.renderSimilarArtists()}</Content>
-      </Container>
+      <Content>
+        <OriginalArtistMain />
+        {this.renderSimilarArtists()}
+      </Content>
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    // originalArtist: "My Bloody Valentine",
-    // originalArtist: state.artist.originalArist,
     similarArtists: state.artist.similarArtists
   };
 };

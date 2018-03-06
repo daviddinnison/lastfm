@@ -2,6 +2,7 @@ import createStyles, {
   colors,
   dimensions,
   fonts,
+  margin,
   padding
 } from '../../../baseStyles';
 
@@ -11,6 +12,18 @@ export default (singleArtistInfo = createStyles({
     flex: 1,
     height: undefined,
     width: undefined
+  },
+  originalArtistContainer: {
+    backgroundColor: colors.primary,
+    margin: margin.sm,
+    padding: padding.sm
+  },
+  originalArtistHeader: {
+    color: colors.white,
+    fontFamily: fonts.primary,
+    fontSize: fonts.xl,
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
   resultContainer: {
     alignItems: 'center',
