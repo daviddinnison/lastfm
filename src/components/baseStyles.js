@@ -6,8 +6,8 @@ export const dimensions = {
 };
 
 export const colors = {
-  primary: '#155263', // dark blue
-  secondary: '#E4FFFF', //tealE
+  primary: '#425788', // dark blue
+  secondary: '#86E1FF', //tealE
   // secondary: '76B39D', //teal
   
   tertiary: '#F0B917', // yellow
@@ -39,7 +39,8 @@ export const fonts = {
   md: 18,
   lg: 22,
   xl: 28,
-  primary: 'Cochin'
+  primary: 'serif',
+  secondary: 'sans-serif'
 };
 
 const baseStyles = {

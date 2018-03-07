@@ -3,6 +3,7 @@ import React from 'react';
 
 // react native
 import { Actions } from 'react-native-router-flux';
+import { Image } from 'react-native';
 import { Container, Text } from 'native-base';
 
 // components

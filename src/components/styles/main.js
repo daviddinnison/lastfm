@@ -5,7 +5,7 @@ export default (singleArtistInfo = createStyles({
     marginBottom: margin.sm
   },
   button: {
-    backgroundColor: colors.secondary
+    backgroundColor: colors.tertiary
   },
   appHeader: {
     backgroundColor: colors.primary,

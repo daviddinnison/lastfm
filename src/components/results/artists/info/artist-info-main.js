@@ -29,17 +29,19 @@ class ArtistInfoMain extends React.Component {
     const data = this.props.similarArtistInfo;
     return (
       <Content style={styles.artistInfoContainer}>
-        <Content style={styles.artistInfoHeader}>
+        <Content style={styles.artistHead}>
           <Text style={styles.artistName}>{data.name}</Text>
-          <Image
-            style={styles.albumImage}
-            source={{ uri: data.image[2]['#text'] }}
-          />
+          <Content style={styles.imageContainer}>
+            <Image
+              style={styles.artistImage}
+              source={{ uri: data.image[2]['#text'] }}
+            />
+          </Content>
         </Content>
         {/* <Tour /> */}
         {/* <TagsComparison /> */}
         <TopAlbumsMain artistName={data.name} />
-        <TopTracksMain artistName={data.name}/>
+        <TopTracksMain artistName={data.name} />
         <Bio />
       </Content>
     );
