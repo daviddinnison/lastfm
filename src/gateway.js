@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 
 //react-native
-import { StyleSheet, Text, View } from 'react-native';
 import { Router, Stack, Scene } from 'react-native-router-flux';
 
 //components

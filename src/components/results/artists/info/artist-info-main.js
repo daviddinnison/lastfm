@@ -28,16 +28,18 @@ class ArtistInfoMain extends React.Component {
   renderData() {
     const data = this.props.similarArtistInfo;
     return (
-      <Content>
-        <Text style={styles.artistName}>{data.name}</Text>
-        <Image
-          style={styles.albumImage}
-          source={{ uri: data.image[2]['#text'] }}
-        />
-        <TagsComparison />
-        <Tour />
+      <Content style={styles.artistInfoContainer}>
+        <Content style={styles.artistInfoHeader}>
+          <Text style={styles.artistName}>{data.name}</Text>
+          <Image
+            style={styles.albumImage}
+            source={{ uri: data.image[2]['#text'] }}
+          />
+        </Content>
+        {/* <Tour /> */}
+        {/* <TagsComparison /> */}
         <TopAlbumsMain artistName={data.name} />
-        <TopTracksMain artistName={data.name} />
+        <TopTracksMain artistName={data.name}/>
         <Bio />
       </Content>
     );
@@ -52,7 +54,7 @@ class ArtistInfoMain extends React.Component {
   }
 
   render() {
-    return <Container style={styles.container}>{this.loadingData()}</Container>;
+    return <Container>{this.loadingData()}</Container>;
   }
 }
 

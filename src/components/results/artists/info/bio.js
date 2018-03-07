@@ -11,8 +11,8 @@ import styles from './styles/main';
 class Bio extends React.Component {
   render() {
     return (
-      <View>
-        <Text style={styles.mainText}>{this.props.bio.content}</Text>
+      <View style={styles.container}>
+        <Text style={styles.bioText}>{this.props.bio.content}</Text>
       </View>
     );
   }

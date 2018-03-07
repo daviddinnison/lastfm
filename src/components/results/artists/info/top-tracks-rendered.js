@@ -13,7 +13,7 @@ class TopTracksRendered extends React.Component {
       <View style={styles.trackContainer}>
         <Text style={styles.trackName}>{this.props.name}</Text>
         <Text style={styles.trackPlays}>
-          plays: {this.props.playcount.toLocaleString()}
+          plays: {this.props.playcount.toLocaleString('en')}
         </Text>
       </View>
     );

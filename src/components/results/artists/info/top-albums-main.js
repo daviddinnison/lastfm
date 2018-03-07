@@ -23,6 +23,7 @@ class TopAlbumsMain extends React.Component {
           horizontal={true}
           data={topAlbums.slice(0, 4)}
           keyExtractor={(item, index) => index}
+          style={styles.albumsMainBackground}
           renderItem={({ item }, index) => (
             <TopAlbumsRendered
               name={item.name}
@@ -37,8 +38,8 @@ class TopAlbumsMain extends React.Component {
 
   render() {
     return (
-      <View>
-        <Text style={styles.subHeader}>Top Artist Albums</Text>
+      <View style={styles.container}>
+        <Text style={styles.infoHeader}>Top Artist Albums</Text>
         {this.renderAlbums()}
       </View>
     );

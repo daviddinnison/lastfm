@@ -7,10 +7,13 @@ export const dimensions = {
 
 export const colors = {
   primary: '#155263', // dark blue
-  secondary: '#76B39D', //teal
+  secondary: '#E4FFFF', //tealE
+  // secondary: '76B39D', //teal
+  
   tertiary: '#F0B917', // yellow
   white: '#FFFFFF',
   offWhite: '#F9F8EB',
+  textDefault: '#323232',
   affirmative: '#008000',
   negative: '#800000'
 };
