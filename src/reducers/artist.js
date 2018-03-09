@@ -43,7 +43,12 @@ const initialState = {
     tags: [],
     tracks: []
   },
-  singleTrack: { album: { image: [] }, artist: {}, toptags: { tag: [] }, wiki: {} }
+  singleTrack: {
+    album: { image: [] },
+    artist: {},
+    toptags: { tag: [] },
+    wiki: {}
+  }
 };
 
 export default function reducer(state = initialState, action) {
@@ -143,6 +148,10 @@ export default function reducer(state = initialState, action) {
     }
     case 'GET_TRACK_INFO_REQUEST': {
       return Object.assign({}, state, {
+        error: {
+          ...state.loading,
+          singleTrack: ''
+        },
         loading: {
           ...state.loading,
           singleTrack: true
@@ -159,7 +168,7 @@ export default function reducer(state = initialState, action) {
       });
     }
     case 'GET_TRACK_INFO_ERROR': {
-      console.log('reucer error', action.error)
+      console.log('reucer error', action.error);
       return Object.assign({}, state, {
         error: {
           ...state.error,

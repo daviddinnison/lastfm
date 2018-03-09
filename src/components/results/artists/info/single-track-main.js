@@ -8,6 +8,8 @@ import { Content, Text } from 'native-base';
 
 // components
 import Loader from '../../../common/loader';
+import Error from '../../../common/error';
+
 
 // actions
 import { getTrackInfo } from '../../../../actions/artist';
@@ -32,10 +34,10 @@ class SingleTrackMain extends React.Component {
   }
 
   renderInfo() {
-    if (this.props.track.wiki.content) {
+    if (this.props.track.wiki) {
       return <Text>{this.props.track.wiki.content}</Text>;
     } else {
-      return <Text>no data here</Text>;
+      return <Text>no track data here</Text>;
     }
   }
 
@@ -58,7 +60,7 @@ class SingleTrackMain extends React.Component {
     if (this.props.loading) {
       return <Loader />;
     } else if (this.props.error) {
-      return <Text>error: {this.props.error}</Text>
+      return <Error message={this.props.error}/>
     }
     
     else if (this.props.track){
