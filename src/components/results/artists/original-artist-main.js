@@ -29,7 +29,7 @@ class OriginalArtistMain extends React.Component {
         <Text style={styles.originalArtistHeader}>
           {this.props.originalArtist}
         </Text>
-        {this.renderTags()}
+        {/* {this.renderTags()} */}
       </View>
     );
   }

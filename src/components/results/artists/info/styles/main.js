@@ -63,6 +63,13 @@ export default (singleArtistInfo = createStyles({
     backgroundColor: colors.white
   },
 
+  albumNameHead: {
+    color: colors.white,
+    fontFamily: fonts.primary,
+    marginLeft: margin.lg
+
+  },
+
   // tracks
   tracksMainBackground: {
     backgroundColor: colors.white

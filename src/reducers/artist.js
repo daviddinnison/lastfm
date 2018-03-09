@@ -10,15 +10,22 @@ import {
   GET_TOP_ALBUMS_REQUEST,
   GET_TOP_ALBUMS_SUCCESS,
   GET_ALBUM_INFO_REQUEST,
-  GET_ALBUM_INFO_SUCCESS
+  GET_ALBUM_INFO_SUCCESS,
+  GET_TRACK_INFO_REQUEST,
+  GET_TRACK_INFO_SUCCESS,
+  GET_TRACK_INFO_ERROR
 } from '../actions/artist';
 
 const initialState = {
   baseComparisonTags: [],
+  error: {
+    singleTrack: ''
+  },
   loading: {
     artistInfo: true,
     initialSearch: false,
     singleAlbum: true,
+    singleTrack: true,
     topAblums: true,
     topTracks: true
   },
@@ -35,7 +42,8 @@ const initialState = {
   singleAlbum: {
     tags: [],
     tracks: []
-  }
+  },
+  singleTrack: { album: { image: [] }, artist: {}, toptags: { tag: [] }, wiki: {} }
 };
 
 export default function reducer(state = initialState, action) {
@@ -130,6 +138,36 @@ export default function reducer(state = initialState, action) {
         loading: {
           ...state.loading,
           singleAlbum: false
+        }
+      });
+    }
+    case 'GET_TRACK_INFO_REQUEST': {
+      return Object.assign({}, state, {
+        loading: {
+          ...state.loading,
+          singleTrack: true
+        }
+      });
+    }
+    case 'GET_TRACK_INFO_SUCCESS': {
+      return Object.assign({}, state, {
+        singleTrack: action.data,
+        loading: {
+          ...state.loading,
+          singleTrack: false
+        }
+      });
+    }
+    case 'GET_TRACK_INFO_ERROR': {
+      console.log('reucer error', action.error)
+      return Object.assign({}, state, {
+        error: {
+          ...state.error,
+          singleTrack: action.error
+        },
+        loading: {
+          ...state.loading,
+          singleTrack: false
         }
       });
     }

@@ -3,7 +3,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 // react native
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Content, Text } from 'native-base';
+
+import { Image } from 'react-native';
 
 // components
 import Loader from '../../../common/loader';
@@ -21,31 +23,33 @@ class SingleAlbumMain extends React.Component {
 
   renderAlbumTags() {
     const tagData = this.props.album.tags.tag.map((item, index) => (
-      <View key={index}>
+      <Content key={index}>
         <Text>{item.name}</Text>
-      </View>
+      </Content>
     ));
+
     return (
-      <View>
-        <Text style={styles.subHeader}>Tags</Text>
+      <Content style={[styles.artistInfoContainer, styles.container]}>
+        <Text style={styles.infoHeader}>Tags</Text>
         {tagData}
-      </View>
+      </Content>
     );
   }
 
   renderAlbumTracks() {
     console.log(this.props.album.tracks.track);
     const trackData = this.props.album.tracks.track.map((item, index) => (
-      <View key={index}>
-        <Text>{item.name}</Text>
-        {/* <Text>length: {item.duration}</Text> */}
-      </View>
+      <Content key={index}>
+        <Text>
+          {index + 1} {item.name} length: {item.duration}
+        </Text>
+      </Content>
     ));
     return (
-      <View>
-        <Text style={styles.subHeader}>Tracks</Text>
+      <Content style={[styles.albumsMainBackground, styles.container]}>
+        <Text style={styles.infoHeader}>Tracks</Text>
         {trackData}
-      </View>
+      </Content>
     );
   }
 
@@ -56,21 +60,24 @@ class SingleAlbumMain extends React.Component {
       console.log('ALBUM DATA IN COMPONENT!!!!', this.props.album);
       const data = this.props.album;
       return (
-        <ScrollView style={styles.mainSection}>
-          <Text style={styles.header}>{this.props.route}</Text>
-          <Image
-            style={{ width: 162, height: 162 }}
-            source={{ uri: data.image[2]['#text'] }}
-          />
-          {this.renderAlbumTags()}
-          {this.renderAlbumTracks()}
-        </ScrollView>
+        <Content style={styles.albumsMainBackground}>
+          <Content style={styles.artistHead}>
+            <Text style={styles.artistName}>{data.artist}</Text>
+            <Text style={styles.albumNameHead}>{this.props.route}</Text>
+            <Image
+              style={styles.artistImage}
+              source={{ uri: data.image[2]['#text'] }}
+            />
+          </Content>
+            {this.renderAlbumTags()}
+            {this.renderAlbumTracks()}
+        </Content>
       );
     }
   }
 
   render() {
-    return <View>{this.renderAlbum()}</View>;
+    return <Content>{this.renderAlbum()}</Content>;
   }
 }
 

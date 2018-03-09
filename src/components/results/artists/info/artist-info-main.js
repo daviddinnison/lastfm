@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 //react native
 import { Image } from 'react-native';
-import { Card, CardItem, Container, Content, Text } from 'native-base';
+import { Container, Content, Text } from 'native-base';
 
 //components
 import Bio from './bio';

@@ -10,12 +10,14 @@ import ArtistResultsMain from './components/results/artists/artist-results-main'
 import ArtistInfoMain from './components/results/artists/info/artist-info-main';
 import OriginalArtistInfo from './components/results/artists/original-artist-main';
 import SingleAlbumMain from './components/results/artists/info/single-album-main';
+import SingleTrackMain from './components/results/artists/info/single-track-main';
 
 class Gateway extends Component {
   render() {
     return (
       <Router>
         <Stack key="root">
+          <Scene key="singleTrackMain" component={SingleTrackMain} />
           <Scene key="launch" component={Launch} />
           <Scene key="similarArtists" component={ArtistResultsMain} />
           <Scene key="artistInfo" component={ArtistInfoMain} />

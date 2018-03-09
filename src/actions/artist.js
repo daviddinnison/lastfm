@@ -208,3 +208,46 @@ export const getAlbumInfo = (albumName, artistName) => dispatch => {
       // dispatch(getHourlyForecastError(err));
     });
 };
+
+
+// TRACKS
+export const GET_TRACK_INFO_REQUEST = 'GET_TRACK_INFO_REQUEST';
+export const getTrackInfoRequest = () => ({ type: GET_TRACK_INFO_REQUEST });
+
+export const GET_TRACK_INFO_SUCCESS = 'GET_TRACK_INFO_SUCCESS';
+export const getTrackInfoSuccess = data => ({
+  type: GET_TRACK_INFO_SUCCESS,
+  data
+});
+
+export const GET_TRACK_INFO_ERROR = 'GET_TRACK_INFO_ERROR';
+export const getTrackInfoError = error => ({
+  type: GET_TRACK_INFO_ERROR,
+  error
+});
+
+export const getTrackInfo = (trackName, artistName) => dispatch => {
+  dispatch(getTrackInfoRequest());
+  const url = `${API_BASE_URL}?method=track.getInfo&api_key=${API_KEY}&artist=${artistName}&track=${trackName}&format=json`;
+  fetch(url, {})
+    .then(res => {
+      if (!res.ok) {
+        console.log('bad response');
+        throw new Error(res.statusText);
+      }
+      return res.json();
+    })
+    .then(data => {
+      console.log("----------SUCCESSFUL ALBUM INFO-------", data)
+      if(data.message) {
+        dispatch(getTrackInfoError(data.message));
+      } else {
+        dispatch(getTrackInfoSuccess(data.track));
+      }
+    })
+
+    .catch(err => {
+      console.log('ended up in a error catch', err);
+      dispatch(getTrackInfoError(err));
+    });
+};
