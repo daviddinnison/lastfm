@@ -100,6 +100,11 @@ export default (singleArtistInfo = createStyles({
     marginVertical: margin.sm,
     marginHorizontal: margin.sm
   },
+  trackHead: {
+    color: colors.white,
+    fontFamily: fonts.primary,
+    marginLeft: margin.md
+  },
   trackName: {
     color: colors.textDefault,
     fontWeight: 'bold',

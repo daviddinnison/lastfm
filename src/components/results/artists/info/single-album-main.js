@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 // react native
 import { Content, Text } from 'native-base';
-import { Image } from 'react-native';
+import { Image, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 // components
@@ -18,8 +18,8 @@ import styles from './styles/main';
 
 class SingleAlbumMain extends React.Component {
   componentDidMount() {
-    const testAlbum = 'Loveless';
-    const testArtist = 'My Bloody Valentine';
+    // const testAlbum = 'Loveless';
+    // const testArtist = 'My Bloody Valentine';
     // this.props.dispatch(getAlbumInfo(testAlbum, testArtist));
 
     this.props.dispatch(getAlbumInfo(this.props.route, this.props.artistName));
@@ -27,16 +27,17 @@ class SingleAlbumMain extends React.Component {
 
   renderAlbumTags() {
     const tagData = this.props.album.tags.tag.map((item, index) => (
-      <Content key={index}>
-        <Text>{item.name}</Text>
-      </Content>
+      <Text style={styles.renderedTagSingle} key={index}>{item.name}</Text>
+      
+      // <Content key={index}>
+      //   <Text>{item.name}</Text>
+      // </Content>
     ));
 
     return (
-      <Content style={[styles.artistInfoContainer, styles.container]}>
-        <Text style={styles.infoHeader}>Tags</Text>
+      <View style={styles.renderedTags}>
         {tagData}
-      </Content>
+      </View>
     );
   }
 
@@ -48,7 +49,7 @@ class SingleAlbumMain extends React.Component {
           onPress={() => {
             Actions.singleTrackMain({
               trackRoute: item.name,
-              artistRoute: this.props.artistName
+              artistRoute: this.props.album.artist
             });
           }}
         >
@@ -74,7 +75,7 @@ class SingleAlbumMain extends React.Component {
         <Content style={styles.albumsMainBackground}>
           <Content style={styles.artistHead}>
             <Text style={styles.artistName}>{data.artist}</Text>
-            <Text style={styles.albumNameHead}>{this.props.route}</Text>
+            <Text style={styles.albumNameHead}>{data.name}</Text>
             <Image
               style={styles.artistImage}
               source={{ uri: data.image[2]['#text'] }}
@@ -88,7 +89,7 @@ class SingleAlbumMain extends React.Component {
   }
 
   render() {
-    return <Content>{this.renderAlbum()}</Content>;
+    return <Content style={styles.artistInfoContainer}>{this.renderAlbum()}</Content>;
   }
 }
 
