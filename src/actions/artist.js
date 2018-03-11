@@ -13,6 +13,12 @@ export const getSimilarArtistSuccess = similarArtists => ({
   similarArtists
 });
 
+export const GET_SIMILAR_ARTIST_ERROR = 'GET_SIMILAR_ARTIST_ERROR';
+export const getSimilarArtistError = error => ({
+  type: GET_SIMILAR_ARTIST_ERROR,
+  error
+});
+
 export const SAVE_ORIGINAL_ARTIST = 'SAVE_ORIGINAL_ARTIST';
 export const saveOriginalArtist = originalArtist => ({
   type: SAVE_ORIGINAL_ARTIST,
@@ -34,18 +40,24 @@ export const getSimilarArtist = userInput => dispatch => {
       return res.json();
     })
     .then(data => {
-      console.log('SIMILAR ARTIST DATA FETCH worked', data);
-      dispatch(saveOriginalArtist(userInput));
-      dispatch(getSimilarArtistSuccess(data.similarartists.artist));
-      dispatch(getTagComparison(userInput));
-      // dispatch(getTopTracks(userInput));
-      // dispatch(getTopAlbums(userInput));
-      Actions.similarArtists();
+      if (data.message) {
+        dispatch(getSimilarArtistError(data.message));
+      } 
+      // else if (data.similarartists.artist.length === 0) {
+      //   dispatch(getSimilarArtistError('Artist not found.'));
+      // } 
+      else {
+        console.log('SIMILAR ARTIST DATA FETCH worked', data);
+        dispatch(saveOriginalArtist(userInput));
+        dispatch(getSimilarArtistSuccess(data.similarartists.artist));
+        dispatch(getTagComparison(userInput));
+        Actions.similarArtists();
+      }
     })
 
     .catch(err => {
       console.log('ended up in a error catch', err);
-      // dispatch(getHourlyForecastError(err));
+      dispatch(getSimilarArtistError(err.message));
     });
 };
 
@@ -209,7 +221,6 @@ export const getAlbumInfo = (albumName, artistName) => dispatch => {
     });
 };
 
-
 // TRACKS
 export const GET_TRACK_INFO_REQUEST = 'GET_TRACK_INFO_REQUEST';
 export const getTrackInfoRequest = () => ({ type: GET_TRACK_INFO_REQUEST });
@@ -238,8 +249,8 @@ export const getTrackInfo = (trackName, artistName) => dispatch => {
       return res.json();
     })
     .then(data => {
-      console.log("----------SUCCESSFUL ALBUM INFO-------", data)
-      if(data.message) {
+      console.log('----------SUCCESSFUL ALBUM INFO-------', data);
+      if (data.message) {
         dispatch(getTrackInfoError(data.message));
       } else {
         dispatch(getTrackInfoSuccess(data.track));

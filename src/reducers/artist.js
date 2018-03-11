@@ -1,6 +1,7 @@
 import {
   GET_SIMILAR_ARTIST_REQUEST,
   GET_SIMILAR_ARTIST_SUCCESS,
+  GET_SIMILAR_ARTIST_ERROR,
   SAVE_ORIGINAL_ARTIST,
   GET_ARTIST_INFO_REQUEST,
   GET_ARTIST_INFO_SUCCESS,
@@ -19,6 +20,7 @@ import {
 const initialState = {
   baseComparisonTags: [],
   error: {
+    initialSearch: '',
     singleTrack: ''
   },
   loading: {
@@ -64,6 +66,19 @@ export default function reducer(state = initialState, action) {
     case 'GET_SIMILAR_ARTIST_SUCCESS': {
       return Object.assign({}, state, {
         similarArtists: action.similarArtists,
+        loading: {
+          ...state.loading,
+          initialSearch: false
+        }
+      });
+    }
+    case 'GET_SIMILAR_ARTIST_ERROR': {
+      console.log('reucer error', action.error);
+      return Object.assign({}, state, {
+        error: {
+          ...state.error,
+          initialSearch: action.error
+        },
         loading: {
           ...state.loading,
           initialSearch: false

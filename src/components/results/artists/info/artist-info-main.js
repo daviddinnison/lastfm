@@ -22,7 +22,10 @@ import { getArtistInfo } from '../../../../actions/artist';
 
 class ArtistInfoMain extends React.Component {
   componentDidMount() {
-    this.props.dispatch(getArtistInfo(this.props.route));
+    const artist = 'Lush';
+    this.props.dispatch(getArtistInfo(artist));
+
+    // this.props.dispatch(getArtistInfo(this.props.route));
   }
 
   renderData() {
@@ -31,7 +34,11 @@ class ArtistInfoMain extends React.Component {
       <Content style={styles.artistInfoContainer}>
         <Content style={styles.artistHead}>
           <Text style={styles.artistName}>{data.name}</Text>
-          <Content style={styles.imageContainer}>
+        </Content>
+        <Content style={styles.artistMetaData}>
+          <TagsComparison style={styles.tagsContainer} />
+          {/* <Text style={styles.tagsContainer}>test</Text> */}
+          <Content>
             <Image
               style={styles.artistImage}
               source={{ uri: data.image[2]['#text'] }}
@@ -39,7 +46,6 @@ class ArtistInfoMain extends React.Component {
           </Content>
         </Content>
         {/* <Tour /> */}
-        {/* <TagsComparison /> */}
         <TopAlbumsMain artistName={data.name} />
         <TopTracksMain artistName={data.name} />
         <Bio />

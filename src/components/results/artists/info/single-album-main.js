@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 
 // react native
 import { Content, Text } from 'native-base';
-
 import { Image } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 // components
 import Loader from '../../../common/loader';
@@ -18,6 +18,10 @@ import styles from './styles/main';
 
 class SingleAlbumMain extends React.Component {
   componentDidMount() {
+    const testAlbum = 'Loveless';
+    const testArtist = 'My Bloody Valentine';
+    // this.props.dispatch(getAlbumInfo(testAlbum, testArtist));
+
     this.props.dispatch(getAlbumInfo(this.props.route, this.props.artistName));
   }
 
@@ -40,7 +44,14 @@ class SingleAlbumMain extends React.Component {
     console.log(this.props.album.tracks.track);
     const trackData = this.props.album.tracks.track.map((item, index) => (
       <Content key={index}>
-        <Text>
+        <Text
+          onPress={() => {
+            Actions.singleTrackMain({
+              trackRoute: item.name,
+              artistRoute: this.props.artistName
+            });
+          }}
+        >
           {index + 1} {item.name} length: {item.duration}
         </Text>
       </Content>
@@ -69,8 +80,8 @@ class SingleAlbumMain extends React.Component {
               source={{ uri: data.image[2]['#text'] }}
             />
           </Content>
-            {this.renderAlbumTags()}
-            {this.renderAlbumTracks()}
+          {this.renderAlbumTags()}
+          {this.renderAlbumTracks()}
         </Content>
       );
     }

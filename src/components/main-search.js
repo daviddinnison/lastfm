@@ -42,6 +42,12 @@ class MainSearch extends React.Component {
     }
   }
 
+  renderError() {
+    if(this.props.error) {
+      return <Text>{this.props.error}</Text>
+    }
+  }
+
   render() {
     return (
       <Container>
@@ -66,6 +72,7 @@ class MainSearch extends React.Component {
             >
             {this.renderButtonText()}
           </Button>
+          {this.renderError()}
         </Content>
       </Container>
     );
@@ -74,6 +81,7 @@ class MainSearch extends React.Component {
 
 const mapStateToProps = state => {
   return {
+    error: state.artist.error.initialSearch,
     loading: state.artist.loading.initialSearch
   };
 };

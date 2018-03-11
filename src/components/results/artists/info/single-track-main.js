@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 // react native
 import { Image } from 'react-native';
 import { Content, Text } from 'native-base';
+import { Actions } from 'react-native-router-flux';
 
 // components
 import Loader from '../../../common/loader';
@@ -20,17 +21,22 @@ import styles from './styles/main';
 class SingleTrackMain extends React.Component {
   componentDidMount() {
     //error
-    const track = 'fsdfsdfss';
-    const artist = 'lllklk';
+    // const track = 'fsdfsdfss';
+    // const artist = 'lllklk';
 
     //with wiki
     // const track = 'Changes';
     // const artist = '2pac'
 
     //without wiki
-    // const track = 'Lovelife';
+    // const track = '500';
     // const artist = 'Lush'
-    this.props.dispatch(getTrackInfo(track, artist));
+    // this.props.dispatch(getTrackInfo(track, artist));
+
+    //inherited from album action - real version
+    console.log('TRACK PROPS', this.props.trackRoute)
+    console.log('ARTIST PROPS', this.props.artistRoute);
+    this.props.dispatch(getTrackInfo(this.props.trackRoute, this.props.artistRoute))
   }
 
   renderInfo() {
@@ -93,7 +99,6 @@ class SingleTrackMain extends React.Component {
 const mapStateToProps = state => {
   return {
     error: state.artist.error.singleTrack,
-    // error: 'track not found',    
     loading: state.artist.loading.singleTrack,
     track: state.artist.singleTrack
   };
