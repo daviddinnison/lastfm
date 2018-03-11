@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 //react native
-import { StyleSheet, Text, View } from 'react-native';
+import { Content, Text } from 'native-base';
 
 // styles
 import styles from './styles/main';
@@ -11,9 +11,9 @@ import styles from './styles/main';
 class Bio extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
+      <Content style={styles.container}>
         <Text style={styles.bioText}>{this.props.bio.content}</Text>
-      </View>
+      </Content>
     );
   }
 }

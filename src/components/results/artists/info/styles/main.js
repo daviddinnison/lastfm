@@ -113,7 +113,10 @@ export default (singleArtistInfo = createStyles({
 
   // bio
   bioText: {
+    backgroundColor: colors.white,
     color: colors.textDefault,
-    fontFamily: fonts.primary
+    fontFamily: fonts.primary,
+    fontSize: fonts.md,
+    padding: padding.sm
   }
 }));
