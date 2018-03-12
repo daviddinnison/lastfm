@@ -16,11 +16,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React Native!"
 
-@interface weatherbossnativeTests : XCTestCase
+@interface tunecatchTests : XCTestCase
 
 @end
 
-@implementation weatherbossnativeTests
+@implementation tunecatchTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL(^)(UIView *view))test
 {
