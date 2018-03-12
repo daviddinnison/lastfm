@@ -65,6 +65,23 @@ class SingleAlbumMain extends React.Component {
       </Content>
     );
   }
+  renderWikiData() {  
+    if(this.props.album.wiki) {
+      return (
+        <Text style={[styles.container, styles.mainText]}>
+          {this.props.album.wiki.content}
+        </Text>
+      );
+    } else {
+      return (
+        <Text style={[styles.container, styles.mainText]}>
+          There is currently no wiki content for this album. Content is
+          submitted via the Last.fm platform.
+        </Text>
+      );
+    }
+
+  }
 
   renderAlbum() {
     if (this.props.loading) {
@@ -75,8 +92,8 @@ class SingleAlbumMain extends React.Component {
       return (
         <Content>
           <Content style={styles.artistHead}>
-            <Text style={styles.artistName}>{data.artist}</Text>
-            <Text style={styles.albumArtistNameHead}>{data.name}</Text>
+            <Text style={styles.albumName}>{data.name}</Text>
+            <Text style={styles.albumArtistNameHead}>{data.artist}</Text>
           </Content>
           <Content contentContainerStyle={styles.artistMetaData}>
             <Image
@@ -86,6 +103,7 @@ class SingleAlbumMain extends React.Component {
             {this.renderAlbumTags()}
           </Content>
           {this.renderAlbumTracks()}
+          {this.renderWikiData()}
         </Content>
       );
     }
