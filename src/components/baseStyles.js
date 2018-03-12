@@ -72,6 +72,9 @@ const baseStyles = {
     fontWeight: 'bold',
     textAlign: 'center'
   },
+  leftMargin: {
+    marginLeft: margin.sm
+  },
   mainSection: {
     paddingVertical: padding.xs,
     paddingHorizontal: padding.xs

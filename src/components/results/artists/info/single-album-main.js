@@ -27,20 +27,24 @@ class SingleAlbumMain extends React.Component {
 
   renderAlbumTags() {
     const tagData = this.props.album.tags.tag.map((item, index) => (
-      <Text style={styles.renderedTagSingle} key={index}>{item.name}</Text>
+      <Text style={styles.renderedTagSingle} key={index}>
+        {item.name}
+      </Text>
     ));
 
-    return (
-      <View style={styles.renderedTags}>
-        {tagData}
-      </View>
-    );
+    return <View style={styles.renderedTags}>{tagData}</View>;
   }
 
   renderAlbumTracks() {
-    console.log(this.props.album.tracks.track);
     const trackData = this.props.album.tracks.track.map((item, index) => (
-      <Content key={index}>
+      <Content
+        key={index}
+        style={[
+          styles.albumsMainBackground,
+          styles.trackContainer,
+          styles.boxShadow
+        ]}
+      >
         <Text
           onPress={() => {
             Actions.singleTrackMain({
@@ -49,13 +53,14 @@ class SingleAlbumMain extends React.Component {
             });
           }}
         >
-          {index + 1}. {item.name}{/*length: {item.duration}*/}
+          {index + 1}. {item.name}
+          {/*length: {item.duration}*/}
         </Text>
       </Content>
     ));
     return (
-      <Content style={[styles.albumsMainBackground, styles.trackContainer, styles.boxShadow]}>
-        <Text style={styles.infoHeader}>Tracks</Text>
+      <Content>
+        <Text style={[styles.infoHeader, styles.leftMargin]}>Tracks</Text>
         {trackData}
       </Content>
     );
@@ -71,16 +76,16 @@ class SingleAlbumMain extends React.Component {
         <Content>
           <Content style={styles.artistHead}>
             <Text style={styles.artistName}>{data.artist}</Text>
-            <Text style={styles.albumNameHead}>{data.name}</Text>
+            <Text style={styles.albumArtistNameHead}>{data.name}</Text>
           </Content>
-   
+          <Content contentContainerStyle={styles.artistMetaData}>
             <Image
               style={styles.artistImage}
               source={{ uri: data.image[2]['#text'] }}
             />
-          {this.renderAlbumTags()}
+            {this.renderAlbumTags()}
+          </Content>
           {this.renderAlbumTracks()}
-
         </Content>
       );
     }
