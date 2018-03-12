@@ -74,22 +74,19 @@ class SingleTrackMain extends React.Component {
     } else if (this.props.error) {
       return <Error message={this.props.error} />;
     } else if (this.props.track) {
-      console.log('track props', this.props.track);
-      console.log('error props', this.props.error);
       const data = this.props.track;
       return (
-        <Content style={styles.albumsMainBackground}>
-          <Content style={styles.artistHead}>
-            <Text style={styles.trackHead}>{data.name}</Text>
-            <Text style={styles.albumNameHead}>{data.album.title}</Text>
+        <Content style={styles.artistInfoContainer}>
+          <Content contentContainerStyle={[styles.albumMetaFlex, styles.leftMargin]}>
+            <Text style={styles.albumName}>{data.name}</Text>
+          </Content>
             <Image
-              style={styles.artistImage}
+              style={[styles.artistImage, styles.leftMargin]}
               source={{ uri: data.album.image[2]['#text'] }}
             />
-          </Content>
-          <Content style={styles.artistInfoContainer}>
-            <Text>Plays: {data.playcount}</Text>
-          </Content>
+
+            <Text style={[styles.albumArtistNameHead, styles.leftMargin]}>{data.album.title}</Text>
+            <Text style={[styles.mainText, styles.leftMargin]}>{data.playcount} plays</Text>
           {this.renderTrackTags()}
           {this.renderInfo()}
         </Content>

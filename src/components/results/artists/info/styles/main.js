@@ -66,11 +66,14 @@ export default (singleArtistInfo = createStyles({
   },
 
   renderedTagSingle: {
-    backgroundColor: colors.quadrary,
-    color: colors.white,
-    marginRight: margin.sm,
-    marginTop: margin.sm,
-    padding: padding.sm
+    // backgroundColor: colors.quadrary,
+    borderColor: colors.quadrary,
+    borderWidth: 2,
+    color: colors.quadrary,
+    fontFamily: fonts.primary,
+    fontSize: fonts.sm,
+    margin: margin.xs,
+    padding: padding.xs
   },
 
   // tour
