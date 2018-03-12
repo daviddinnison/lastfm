@@ -44,7 +44,6 @@ export default (singleArtistInfo = createStyles({
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'nowrap'
-
   },
 
   artistImage: {
@@ -55,17 +54,19 @@ export default (singleArtistInfo = createStyles({
   // tags
 
   renderedTags: {
-    flexDirection: 'row'
+    alignItems: 'flex-start',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginBottom: margin.sm,
+    marginLeft: margin.sm
   },
-  
+
   renderedTagSingle: {
-    backgroundColor: colors.white,
-    borderColor: colors.tertiary,
-    borderWidth: 5,
-    color: colors.tertiary,
-    flex: 1,
+    backgroundColor: colors.tertiary,
+    color: colors.white,
     marginRight: margin.sm,
-    paddingLeft: padding.sm
+    marginTop: margin.sm,
+    padding: padding.sm
   },
 
   // tour

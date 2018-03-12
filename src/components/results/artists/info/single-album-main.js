@@ -18,11 +18,11 @@ import styles from './styles/main';
 
 class SingleAlbumMain extends React.Component {
   componentDidMount() {
-    // const testAlbum = 'Loveless';
-    // const testArtist = 'My Bloody Valentine';
-    // this.props.dispatch(getAlbumInfo(testAlbum, testArtist));
+    const testAlbum = 'Loveless';
+    const testArtist = 'My Bloody Valentine';
+    this.props.dispatch(getAlbumInfo(testAlbum, testArtist));
 
-    this.props.dispatch(getAlbumInfo(this.props.route, this.props.artistName));
+    // this.props.dispatch(getAlbumInfo(this.props.route, this.props.artistName));
   }
 
   renderAlbumTags() {
