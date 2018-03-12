@@ -28,10 +28,6 @@ class SingleAlbumMain extends React.Component {
   renderAlbumTags() {
     const tagData = this.props.album.tags.tag.map((item, index) => (
       <Text style={styles.renderedTagSingle} key={index}>{item.name}</Text>
-      
-      // <Content key={index}>
-      //   <Text>{item.name}</Text>
-      // </Content>
     ));
 
     return (
@@ -53,12 +49,12 @@ class SingleAlbumMain extends React.Component {
             });
           }}
         >
-          {index + 1} {item.name} length: {item.duration}
+          {index + 1}. {item.name}{/*length: {item.duration}*/}
         </Text>
       </Content>
     ));
     return (
-      <Content style={[styles.albumsMainBackground, styles.container]}>
+      <Content style={[styles.albumsMainBackground, styles.trackContainer, styles.boxShadow]}>
         <Text style={styles.infoHeader}>Tracks</Text>
         {trackData}
       </Content>
@@ -72,24 +68,26 @@ class SingleAlbumMain extends React.Component {
       console.log('ALBUM DATA IN COMPONENT!!!!', this.props.album);
       const data = this.props.album;
       return (
-        <Content style={styles.albumsMainBackground}>
+        <Content>
           <Content style={styles.artistHead}>
             <Text style={styles.artistName}>{data.artist}</Text>
             <Text style={styles.albumNameHead}>{data.name}</Text>
+          </Content>
+   
             <Image
               style={styles.artistImage}
               source={{ uri: data.image[2]['#text'] }}
             />
-          </Content>
           {this.renderAlbumTags()}
           {this.renderAlbumTracks()}
+
         </Content>
       );
     }
   }
 
   render() {
-    return <Content style={styles.artistInfoContainer}>{this.renderAlbum()}</Content>;
+    return <Content>{this.renderAlbum()}</Content>;
   }
 }
 

@@ -50,7 +50,8 @@ export default (singleArtistInfo = createStyles({
 
   artistImage: {
     height: dimensions.fullHeight * .4,
-    width: dimensions.fullWidth * .7
+    width: dimensions.fullWidth * .7,
+    marginBottom: margin.md
   },
 
   // tags
@@ -86,9 +87,26 @@ export default (singleArtistInfo = createStyles({
     backgroundColor: colors.white
   },
 
-  albumNameHead: {
+  albumName: {
     color: colors.white,
     fontFamily: fonts.primary,
+    fontSize: fonts.xl,
+    fontWeight: 'bold',
+    marginBottom: margin.xs,
+    padding: padding.md,
+    paddingBottom: padding.xs,
+    textShadowColor: colors.tertiary,
+    textShadowOffset: {
+      height: 2,
+      width: 2
+    },
+    textShadowRadius: 15
+  },
+
+  albumArtistNameHead: {
+    color: colors.white,
+    fontFamily: fonts.primary,
+    marginBottom: margin.sm,
     marginLeft: margin.lg
   },
 
@@ -100,7 +118,7 @@ export default (singleArtistInfo = createStyles({
   trackContainer: {
     paddingVertical: padding.sm,
     paddingHorizontal: padding.sm,
-    marginVertical: margin.sm,
+    marginVertical: margin.xs,
     marginHorizontal: margin.sm
   },
   trackHead: {
