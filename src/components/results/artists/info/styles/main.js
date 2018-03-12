@@ -13,7 +13,7 @@ export default (singleArtistInfo = createStyles({
 
   // header
   artistHead: {
-    backgroundColor: colors.primary,
+    backgroundColor: colors.textDefault,
     marginBottom: margin.md
   },
 
@@ -44,6 +44,7 @@ export default (singleArtistInfo = createStyles({
   artistMetaData: {
     alignItems: 'center',
     flexDirection: 'column',
+    flex: 1,
     flexWrap: 'nowrap',
     justifyContent: 'center'
   },
@@ -65,7 +66,7 @@ export default (singleArtistInfo = createStyles({
   },
 
   renderedTagSingle: {
-    backgroundColor: colors.tertiary,
+    backgroundColor: colors.quadrary,
     color: colors.white,
     marginRight: margin.sm,
     marginTop: margin.sm,
@@ -83,31 +84,37 @@ export default (singleArtistInfo = createStyles({
   },
 
   // albums
+  albumMetaFlex: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+
   albumsMainBackground: {
     backgroundColor: colors.white
   },
 
   albumName: {
-    color: colors.white,
+    color: colors.textDefault,
     fontFamily: fonts.primary,
     fontSize: fonts.xl,
     fontWeight: 'bold',
-    marginBottom: margin.xs,
-    padding: padding.md,
-    paddingBottom: padding.xs,
-    textShadowColor: colors.tertiary,
-    textShadowOffset: {
-      height: 2,
-      width: 2
-    },
-    textShadowRadius: 15
   },
 
   albumArtistNameHead: {
-    color: colors.white,
+    color: colors.textDefault,
     fontFamily: fonts.primary,
-    marginBottom: margin.sm,
-    marginLeft: margin.lg
+    fontSize: fonts.md,
+    fontWeight: 'bold',
+
+  },
+
+  icon: {
+    height: 15,
+    // paddingRight: padding.md,
+    marginHorizontal: margin.sm,
+    width: 15
   },
 
   // tracks

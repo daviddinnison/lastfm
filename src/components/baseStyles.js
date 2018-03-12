@@ -6,11 +6,10 @@ export const dimensions = {
 };
 
 export const colors = {
-  primary: '#1e1e1e', // dark blue
-  secondary: '#ebebeb', //tealE
-  // secondary: '76B39D', //teal
-  
-  tertiary: '#F0B917', // yellow
+  primary: '#1e1e1e',
+  secondary: '#fdfdfd', 
+  tertiary: '#F0B917', 
+  quadrary: '#808080',
   white: '#FFFFFF',
   offWhite: '#F9F8EB',
   textDefault: '#323232',
@@ -39,8 +38,8 @@ export const fonts = {
   md: 18,
   lg: 22,
   xl: 28,
-  primary: 'serif',
-  secondary: 'sans-serif'
+  primary: 'Roboto', //serif
+  secondary: 'sans-serif' //sans serif
 };
 
 const baseStyles = {

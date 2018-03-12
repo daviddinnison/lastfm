@@ -15,6 +15,8 @@ import { getAlbumInfo } from '../../../../actions/artist';
 
 // styles
 import styles from './styles/main';
+import album from './styles/album.png';
+import musician from './styles/musician.png';
 
 class SingleAlbumMain extends React.Component {
   componentDidMount() {
@@ -65,8 +67,8 @@ class SingleAlbumMain extends React.Component {
       </Content>
     );
   }
-  renderWikiData() {  
-    if(this.props.album.wiki) {
+  renderWikiData() {
+    if (this.props.album.wiki) {
       return (
         <Text style={[styles.container, styles.mainText]}>
           {this.props.album.wiki.content}
@@ -80,7 +82,6 @@ class SingleAlbumMain extends React.Component {
         </Text>
       );
     }
-
   }
 
   renderAlbum() {
@@ -91,15 +92,19 @@ class SingleAlbumMain extends React.Component {
       const data = this.props.album;
       return (
         <Content>
-          <Content style={styles.artistHead}>
+          <Content contentContainerStyle={styles.albumMetaFlex}>
+            <Image source={album} style={styles.icon} />
             <Text style={styles.albumName}>{data.name}</Text>
+          </Content>
+          <Image
+            style={[styles.artistImage, styles.leftMargin]}
+            source={{ uri: data.image[2]['#text'] }}
+          />
+          <Content contentContainerStyle={styles.albumMetaFlex}>
+            <Image source={musician} style={styles.icon} />
             <Text style={styles.albumArtistNameHead}>{data.artist}</Text>
           </Content>
           <Content contentContainerStyle={styles.artistMetaData}>
-            <Image
-              style={styles.artistImage}
-              source={{ uri: data.image[2]['#text'] }}
-            />
             {this.renderAlbumTags()}
           </Content>
           {this.renderAlbumTracks()}
