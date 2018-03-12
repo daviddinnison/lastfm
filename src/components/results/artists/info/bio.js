@@ -11,7 +11,7 @@ import styles from './styles/main';
 class Bio extends React.Component {
   render() {
     return (
-      <Content style={styles.container}>
+      <Content style={[styles.container, styles.boxShadow]}>
         <Text style={styles.bioText}>{this.props.bio.content}</Text>
       </Content>
     );

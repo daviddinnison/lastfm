@@ -6,6 +6,6 @@ import { Spinner } from 'native-base';
 
 export default class Loader extends React.Component {
   render() {
-    return <Spinner color="#155263" />;
+    return <Spinner color="#1e1e1e" />;
   }
 }

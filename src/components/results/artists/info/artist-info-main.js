@@ -3,8 +3,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 //react native
-import { Image } from 'react-native';
-import { Container, Content, Text } from 'native-base';
+import { Image, View } from 'react-native';
+import { Container, Content, Header, Text } from 'native-base';
 
 //components
 import Bio from './bio';
@@ -35,17 +35,14 @@ class ArtistInfoMain extends React.Component {
         <Content style={styles.artistHead}>
           <Text style={styles.artistName}>{data.name}</Text>
         </Content>
-        <Content style={styles.artistMetaData}>
-          <TagsComparison style={styles.tagsContainer} />
-          {/* <Text style={styles.tagsContainer}>test</Text> */}
-          <Content>
+        <Content contentContainerStyle={styles.artistMetaData}>
+            <Tour />
             <Image
               style={styles.artistImage}
               source={{ uri: data.image[2]['#text'] }}
             />
-          </Content>
+            <TagsComparison style={styles.tagsContainer} />
         </Content>
-        {/* <Tour /> */}
         <TopAlbumsMain artistName={data.name} />
         <TopTracksMain artistName={data.name} />
         <Bio />

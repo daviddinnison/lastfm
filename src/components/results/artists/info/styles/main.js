@@ -1,5 +1,6 @@
 import createStyles, {
   colors,
+  dimensions,
   fonts,
   margin,
   padding
@@ -41,14 +42,15 @@ export default (singleArtistInfo = createStyles({
 
   // album image
   artistMetaData: {
-    flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'nowrap'
+    alignItems: 'center',
+    flexDirection: 'column',
+    flexWrap: 'nowrap',
+    justifyContent: 'center'
   },
 
   artistImage: {
-    height: 162,
-    width: 162
+    height: dimensions.fullHeight * .4,
+    width: dimensions.fullWidth * .7
   },
 
   // tags

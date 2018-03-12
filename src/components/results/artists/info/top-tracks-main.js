@@ -23,7 +23,7 @@ class TopTracksMain extends React.Component {
           horizontal={true}
           data={topTenTracks.slice(0, 9)}
           keyExtractor={(item, index) => index}
-          style={styles.tracksMainBackground}
+          style={[styles.tracksMainBackground, styles.boxShadow]}
           renderItem={({ item }, index) => (
             <TopTracksRendered
               name={item.name}

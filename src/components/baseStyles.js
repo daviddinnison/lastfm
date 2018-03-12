@@ -49,6 +49,9 @@ const baseStyles = {
     paddingVertical: padding.lg,
     width: dimensions.fullWidth
   },
+  boxShadow: {
+    elevation: 4,
+  },
   header: {
     backgroundColor: 'transparent',
     fontFamily: fonts.primary,
