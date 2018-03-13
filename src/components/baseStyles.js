@@ -38,6 +38,7 @@ export const fonts = {
   md: 18,
   lg: 22,
   xl: 28,
+  xxl: 36,
   primary: 'Roboto', //serif
   secondary: 'sans-serif' //sans serif
 };
@@ -80,7 +81,38 @@ const baseStyles = {
   },
   mainText: {
     fontFamily: fonts.primary
-  }
+  },
+  renderedTags: {
+    alignItems: 'flex-start',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginBottom: margin.sm,
+    marginLeft: margin.sm
+  },
+  shadow: {
+    // textShadowColor: colors.quadrary,
+    // textShadowOffset: {
+    //   height: 2,
+    //   width: 2
+    // },
+    // textShadowRadius: 15
+    textShadowColor: colors.quadrary,
+    textShadowOffset: {
+      height: 2,
+      width: 2
+    },
+    textShadowRadius: 25
+  },
+
+  renderedTagSingle: {
+    borderColor: colors.quadrary,
+    borderWidth: 2,
+    color: colors.quadrary,
+    fontFamily: fonts.primary,
+    fontSize: fonts.sm,
+    margin: margin.xs,
+    padding: padding.xs
+  },
 };
 
 export default function createStyles(overrides = {}) {

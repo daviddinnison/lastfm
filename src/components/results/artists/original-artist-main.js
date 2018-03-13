@@ -2,7 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
-import { Text } from 'native-base'; 
+import { Text } from 'native-base';
 
 // styles
 import styles from './styles/main';
@@ -11,13 +11,11 @@ class OriginalArtistMain extends React.Component {
   renderTags() {
     if (this.props.tags.length !== 0) {
       const tagData = this.props.tags.tag.map((item, index) => (
-        <View key={index} style={styles.originalArtistTagContainer}>
-          <Text style={styles.originalArtistTagText}>
-            {item.name}
-          </Text>
-        </View>
+        <Text key={index} style={styles.renderedTagSingle}>
+          {item.name}
+        </Text>
       ));
-      return <View style={styles.resultContainer}>{tagData}</View>;
+      return <View style={styles.renderedTags}>{tagData}</View>;
     } else {
       return;
     }
@@ -25,11 +23,11 @@ class OriginalArtistMain extends React.Component {
 
   render() {
     return (
-      <View style={styles.originalArtistContainer}>
-        <Text style={styles.originalArtistHeader}>
+      <View>
+        <Text style={[styles.originalArtistHeader, styles.leftMargin, styles.shadow]}>
           {this.props.originalArtist}
         </Text>
-        {/* {this.renderTags()} */}
+        {this.renderTags()}
       </View>
     );
   }

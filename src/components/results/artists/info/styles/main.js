@@ -13,24 +13,15 @@ export default (singleArtistInfo = createStyles({
 
   // header
   artistHead: {
-    backgroundColor: colors.textDefault,
     marginBottom: margin.md
   },
 
   artistName: {
-    color: colors.white,
+    color: colors.textDefault,
     fontFamily: fonts.primary,
-    fontSize: fonts.xl,
+    fontSize: fonts.xxl,
     fontWeight: 'bold',
-    marginBottom: margin.sm,
-    padding: padding.md,
-    paddingBottom: padding.sm,
-    textShadowColor: colors.tertiary,
-    textShadowOffset: {
-      height: 2,
-      width: 2
-    },
-    textShadowRadius: 15
+    marginLeft: margin.sm,
   },
 
   infoHeader: {
@@ -38,6 +29,13 @@ export default (singleArtistInfo = createStyles({
     fontFamily: fonts.secondary,
     fontSize: fonts.md,
     fontWeight: 'bold'
+  },
+
+  playCount: {
+    color: colors.textDefault,
+    fontFamily: fonts.secondary,
+    fontSize: fonts.sm,
+    fontStyle: 'italic'
   },
 
   // album image
@@ -56,25 +54,6 @@ export default (singleArtistInfo = createStyles({
   },
 
   // tags
-
-  renderedTags: {
-    alignItems: 'flex-start',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginBottom: margin.sm,
-    marginLeft: margin.sm
-  },
-
-  renderedTagSingle: {
-    // backgroundColor: colors.quadrary,
-    borderColor: colors.quadrary,
-    borderWidth: 2,
-    color: colors.quadrary,
-    fontFamily: fonts.primary,
-    fontSize: fonts.sm,
-    margin: margin.xs,
-    padding: padding.xs
-  },
 
   // tour
   onTour: {

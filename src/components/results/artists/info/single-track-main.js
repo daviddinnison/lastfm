@@ -25,15 +25,13 @@ class SingleTrackMain extends React.Component {
 
     //with wiki
     const track = 'Temperature';
-    const artist = 'Sean Paul'
+    const artist = 'Sean Paul';
 
     //without wiki
     // const track = 'Flower Power';
     // const artist = 'Ringo Deathstarr';
-    
-    
-    this.props.dispatch(getTrackInfo(track, artist));
 
+    this.props.dispatch(getTrackInfo(track, artist));
 
     //inherited from album action - real version
     // console.log('TRACK PROPS', this.props.trackRoute)
@@ -44,16 +42,20 @@ class SingleTrackMain extends React.Component {
   renderInfo() {
     if (this.props.track.wiki) {
       return (
-        <Text style={[styles.container, styles.mainText]}>
+        <View style={styles.container}>
+        <Text style={[styles.bioText]}>
           {this.props.track.wiki.content}
         </Text>
+        </View>
       );
     } else {
       return (
-        <Text style={[styles.container, styles.mainText]}>
+        <View style={styles.container}>
+        <Text style={[styles.bioText]}>
           There is currently no wiki content for this track. Content is
           submitted via the Last.fm platform.
         </Text>
+        </View>
       );
     }
   }
@@ -77,16 +79,20 @@ class SingleTrackMain extends React.Component {
       const data = this.props.track;
       return (
         <Content style={styles.artistInfoContainer}>
-          <Content contentContainerStyle={[styles.albumMetaFlex, styles.leftMargin]}>
-            <Text style={styles.albumName}>{data.name}</Text>
+          <Content contentContainerStyle={[styles.leftMargin]}>
+            <Text style={[styles.albumName, styles.shadow]}>{data.name}</Text>
+            <Text style={[styles.playCount, styles.leftMargin]}>
+              {data.playcount.toLocaleString('en')} plays
+            </Text>
           </Content>
-            <Image
-              style={[styles.artistImage, styles.leftMargin]}
-              source={{ uri: data.album.image[2]['#text'] }}
-            />
+          <Image
+            style={[styles.artistImage, styles.leftMargin]}
+            source={{ uri: data.album.image[2]['#text'] }}
+          />
 
-            <Text style={[styles.albumArtistNameHead, styles.leftMargin]}>{data.album.title}</Text>
-            <Text style={[styles.mainText, styles.leftMargin]}>{data.playcount} plays</Text>
+          <Text style={[styles.albumArtistNameHead, styles.leftMargin]}>
+            {data.album.title}
+          </Text>
           {this.renderTrackTags()}
           {this.renderInfo()}
         </Content>

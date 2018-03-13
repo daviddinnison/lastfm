@@ -33,10 +33,10 @@ class ArtistInfoMain extends React.Component {
     return (
       <Content style={styles.artistInfoContainer}>
         <Content style={styles.artistHead}>
-          <Text style={styles.artistName}>{data.name}</Text>
+          <Text style={[styles.artistName, styles.shadow]}>{data.name}</Text>
         </Content>
-        <Content contentContainerStyle={styles.artistMetaData}>
-            <Tour />
+        <Content contentContainerStyle={[styles.artistMetaFlex, styles.leftMargin]}>
+            {/* <Tour /> */}
             <Image
               style={styles.artistImage}
               source={{ uri: data.image[2]['#text'] }}

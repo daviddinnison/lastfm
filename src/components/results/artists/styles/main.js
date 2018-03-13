@@ -7,17 +7,11 @@ import createStyles, {
 } from '../../../baseStyles';
 
 export default (singleArtistInfo = createStyles({
-  originalArtistContainer: {
-    backgroundColor: colors.primary,
-    margin: margin.sm,
-    padding: padding.sm
-  },
   originalArtistHeader: {
-    color: colors.white,
+    color: colors.primary,
     fontFamily: fonts.primary,
-    fontSize: fonts.xl,
+    fontSize: fonts.xxl,
     fontWeight: 'bold',
-    textAlign: 'center'
   },
   originalArtistTagContainer: {
     alignItems: 'center',
